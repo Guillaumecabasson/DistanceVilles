@@ -2,6 +2,7 @@
 app\build\*
 app/build/*
 /*/*/build
+/build
 
 # files for the dex VM
 *.dex
