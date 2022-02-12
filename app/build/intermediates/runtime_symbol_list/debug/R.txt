@@ -2603,7 +2603,9 @@ int id bounce 0x7f08005e
 int id bounceBoth 0x7f08005f
 int id bounceEnd 0x7f080060
 int id bounceStart 0x7f080061
+int id buttonJouer 0x7f0801e3
 int id buttonPanel 0x7f080062
+int id buttonQuitter 0x7f0801e4
 int id cache_measures 0x7f080063
 int id callMeasure 0x7f080064
 int id cancel_button 0x7f080065
@@ -2719,8 +2721,6 @@ int id ifRoom 0x7f0800d2
 int id ignore 0x7f0800d3
 int id ignoreRequest 0x7f0800d4
 int id image 0x7f0800d5
-int id imageButton 0x7f0800d6
-int id imageButton2 0x7f0800d7
 int id immediateStop 0x7f0800d8
 int id included 0x7f0800d9
 int id info 0x7f0800da
@@ -2841,6 +2841,8 @@ int id postLayout 0x7f08014c
 int id progress_circular 0x7f08014d
 int id progress_horizontal 0x7f08014e
 int id radio 0x7f08014f
+int id radioButton 0x7f0801e1
+int id radioButton2 0x7f0801e2
 int id ratio 0x7f080150
 int id rectangles 0x7f080151
 int id reverseSawtooth 0x7f080152
@@ -2939,6 +2941,8 @@ int id textTop 0x7f0801ae
 int id textView 0x7f0801af
 int id textView2 0x7f0801b0
 int id textView3 0x7f0801b1
+int id textViewNoms 0x7f0801e5
+int id textViewTitre 0x7f0801e6
 int id text_input_end_icon 0x7f0801b2
 int id text_input_error_icon 0x7f0801b3
 int id text_input_start_icon 0x7f0801b4
@@ -3071,7 +3075,8 @@ int layout abc_search_dropdown_item_icons_2line 0x7f0b0018
 int layout abc_search_view 0x7f0b0019
 int layout abc_select_dialog_material 0x7f0b001a
 int layout abc_tooltip 0x7f0b001b
-int layout activity_main 0x7f0b001c
+int layout activity_jeu 0x7f0b0075
+int layout activity_menu 0x7f0b0074
 int layout custom_dialog 0x7f0b001d
 int layout design_bottom_navigation_item 0x7f0b001e
 int layout design_bottom_sheet_dialog 0x7f0b001f
@@ -3194,6 +3199,7 @@ int string abc_toolbar_collapse_description 0x7f0f001a
 int string androidx_startup 0x7f0f001b
 int string app_name 0x7f0f001c
 int string appbar_scrolling_view_behavior 0x7f0f001d
+int string auteurs 0x7f0f0084
 int string bottom_sheet_behavior 0x7f0f001e
 int string bottomsheet_action_expand_halfway 0x7f0f001f
 int string character_counter_content_description 0x7f0f0020
@@ -3253,6 +3259,8 @@ int string material_timepicker_minute 0x7f0f0055
 int string material_timepicker_pm 0x7f0f0056
 int string material_timepicker_select_time 0x7f0f0057
 int string material_timepicker_text_input_mode_description 0x7f0f0058
+int string menu_play 0x7f0f0085
+int string menu_quit 0x7f0f0086
 int string mtrl_badge_numberless_content_description 0x7f0f0059
 int string mtrl_chip_close_icon_content_description 0x7f0f005a
 int string mtrl_exceed_max_badge_number_content_description 0x7f0f005b

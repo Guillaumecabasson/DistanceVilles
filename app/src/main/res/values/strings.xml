@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">DistanceVilles</string>
+    <!--GENERAL-->
+    <string name="app_name">City Guesser</string>
+    <string name="auteurs">CABASSON Guillaume</string>
+
+    <!--MENU ACCUEIL-->
+    <string name="menu_play">JOUER</string>
+    <string name="menu_quit">QUITTER</string>
 </resources>
