@@ -1,5 +1,5 @@
 # Build application files
-app\build\*
+app/build/*
 build/
 
 # Crashlytics configuations
