@@ -22,6 +22,7 @@ public class Utils {
         Ville Nantes = new Ville("Nantes", 47.2186371, -1.5541362, 0);
         Ville Lyon = new Ville("Lyon", 45.7578137, 4.8320114, 0);
         Ville Toulouse = new Ville("Toulouse", 43.6044622, 1.4442469, 0);
+        Ville Nice = new Ville("Toulouse", 43.7009358, 7.2683912, 0);
 
         ArrayList<QuestionVilles> questions = new ArrayList<QuestionVilles>();
         questions.add(new QuestionVilles(0, Metz, new Ville[]{ Nancy, Paris }, 0));
