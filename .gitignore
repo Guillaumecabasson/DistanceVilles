@@ -1,5 +1,5 @@
 # Build application files
-app\build\*
+.app/build/*
 
 # Crashlytics configuations
 com_crashlytics_export_strings.xml
