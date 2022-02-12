@@ -11,7 +11,7 @@ public class Utils {
         int i;
 
         // initialiseVilles();
-        // créer lecteur de fichier txt pour stocker ce merdier ailleurs ?
+        // OU créer lecteur de fichier txt pour stocker ce merdier ailleurs ?
         // https://www.coordonnees-gps.fr/communes/metz-/57463
         Ville Metz = new Ville("Metz", 49.1196964, 6.1763552, 0);
         Ville Nancy = new Ville("Nancy", 48.6937223, 6.1834097, 0);
@@ -28,6 +28,7 @@ public class Utils {
         questions.add(new QuestionVilles(0, Metz, new Ville[]{ Nancy, Paris }, 0));
         questions.add(new QuestionVilles(0, Paris, new Ville[]{ Marseille, Lille }, 1));
         questions.add(new QuestionVilles(0, Strasbourg, new Ville[]{ Nantes, Lyon }, 0));
+        questions.add(new QuestionVilles(0, Nantes, new Ville[]{ Toulouse, Nice }, 0));
 
 //        for(i=0;i<10;i++){ //tirage de villes au hasard parmi celles dispo et création de questions
 //

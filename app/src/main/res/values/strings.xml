@@ -6,4 +6,7 @@
     <!--MENU ACCUEIL-->
     <string name="menu_play">JOUER</string>
     <string name="menu_quit">QUITTER</string>
+
+    <!--STRING JEU-->
+    <string name="btn_valider">VALIDER</string>
 </resources>

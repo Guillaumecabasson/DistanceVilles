@@ -32,12 +32,18 @@ public class ActivityJeu extends Activity {
         answer2 = (RadioButton)(this.findViewById(R.id.answer2));
         textview_question = (TextView) (this.findViewById(R.id.question));
 
+    }
+
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+
         String textToDisplay = "Quelle est la ville la plus proche de " + questionVilles.get(0).getVille().getNom() + " ?" ;
         textview_question.setText(textToDisplay);
 
         for(int i=0; i < answers.getChildCount(); i++){
             ((RadioButton) answers.getChildAt(i)).setText(String.valueOf(questionVilles.get(0).getReponses()[i].getNom()));
         }
-
     }
 }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FFFFFF">
+    android:background="@color/white">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
             android:gravity="center"
             android:text="@string/app_name"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="@color/black"
             android:visibility="visible"
             android:textSize="80sp" />
 
@@ -41,8 +41,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:autoSizeTextType="uniform"
-            android:background="#22780F"
-            android:textColor="#FFFFFF"
+            android:background="@color/green"
+            android:textColor="@color/white"
             android:gravity="center|center_horizontal|center_vertical"
             android:letterSpacing="0"
             android:lines="1"
@@ -56,20 +56,20 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:autoSizeTextType="uniform"
-            android:background="#F44336"
+            android:background="@color/red"
             android:text="@string/menu_quit"
             android:textAlignment="center"
-            android:textColor="#FFFFFF" />
+            android:textColor="@color/white" />
 
         <TextView
             android:id="@+id/textViewNoms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center|right"
+            android:gravity="center|end"
             android:text="@string/auteurs"
             android:textAlignment="center"
-            android:textColor="#000000"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:visibility="visible" />
 
