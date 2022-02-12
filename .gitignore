@@ -3,6 +3,9 @@ app/build/
 build/
 /*/*/build
 
+# files for the dex VM
+*.dex
+
 # Crashlytics configuations
 com_crashlytics_export_strings.xml
 
