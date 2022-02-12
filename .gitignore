@@ -1,6 +1,6 @@
 # Build application files
-app/build/
-build/
+app\build\*
+app/build/*
 /*/*/build
 
 # files for the dex VM
