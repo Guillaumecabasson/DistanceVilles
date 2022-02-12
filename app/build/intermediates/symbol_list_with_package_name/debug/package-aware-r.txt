@@ -2584,6 +2584,8 @@ id allStates
 id always
 id animateToEnd
 id animateToStart
+id answer1
+id answer2
 id antiClockwise
 id anticipate
 id arc
@@ -2841,9 +2843,9 @@ id position
 id postLayout
 id progress_circular
 id progress_horizontal
+id question
 id radio
-id radioButton
-id radioButton2
+id radio_group
 id ratio
 id rectangles
 id reverseSawtooth
@@ -2941,7 +2943,7 @@ id textStart
 id textTop
 id textView
 id textView2
-id textView3
+id textView4
 id textViewNoms
 id textViewTitre
 id text_input_end_icon

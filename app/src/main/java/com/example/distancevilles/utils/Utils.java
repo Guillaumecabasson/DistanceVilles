@@ -12,14 +12,15 @@ public class Utils {
 
         // initialiseVilles();
         // créer lecteur de fichier txt pour stocker ce merdier ailleurs ?
-        Ville Metz = new Ville("Metz", 0, 0, 0);
-        Ville Nancy = new Ville("Nancy", 0, 0, 0);
-        Ville Paris = new Ville("Paris", 0, 0, 0);
-        Ville Marseille = new Ville("Marseille", 0, 0, 0);
-        Ville Lille = new Ville("Lille", 0, 0, 0);
-        Ville Strasbourg = new Ville("Strasbourg", 0, 0, 0);
-        Ville Nantes = new Ville("Nantes", 0, 0, 0);
-        Ville Lyon = new Ville("Lyon", 0, 0, 0);
+        // https://www.coordonnees-gps.fr/communes/metz-/57463
+        Ville Metz = new Ville("Metz", 49.1196964, 6.1763552, 0);
+        Ville Nancy = new Ville("Nancy", 48.6937223, 6.1834097, 0);
+        Ville Paris = new Ville("Paris", 48.8588897, 2.320041, 0);
+        Ville Marseille = new Ville("Marseille", 43.2961743, 5.3699525, 0);
+        Ville Lille = new Ville("Lille", 50.6365654, 3.0635282, 0);
+        Ville Strasbourg = new Ville("Strasbourg", 48.584614, 7.7507127, 0);
+        Ville Nantes = new Ville("Nantes", 47.2186371, -1.5541362, 0);
+        Ville Lyon = new Ville("Lyon", 45.7578137, 4.8320114, 0);
 
         ArrayList<QuestionVilles> questions = new ArrayList<QuestionVilles>();
         questions.add(new QuestionVilles(0, Metz, new Ville[]{ Nancy, Paris }, 0));
