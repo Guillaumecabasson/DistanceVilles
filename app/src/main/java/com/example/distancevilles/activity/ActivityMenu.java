@@ -11,7 +11,7 @@ public class ActivityMenu extends Activity{
 
     Button buttonJouer;
     Button buttonQuitter;
-    public static final int REQUEST_CODE = 1;
+    public static final int REQUEST_CODE = 1; // ?
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

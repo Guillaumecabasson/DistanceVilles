@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:autoSizeTextType="uniform"
-            android:background="#0098D4"
+            android:background="#22780F"
             android:textColor="#FFFFFF"
             android:gravity="center|center_horizontal|center_vertical"
             android:letterSpacing="0"
