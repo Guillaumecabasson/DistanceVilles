@@ -2,7 +2,6 @@ package com.example.distancevilles.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;

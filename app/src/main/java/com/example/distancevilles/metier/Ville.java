@@ -8,10 +8,10 @@ public class Ville {
     private int population;
 
     public Ville(String nom, double longitude, double latitude, int population) {
-        this.nom = nom;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.population = population;
+        setNom(nom);
+        setLongitude(longitude);
+        setLatitude(latitude);
+        setPopulation(population);
     }
 
     public String getNom() {

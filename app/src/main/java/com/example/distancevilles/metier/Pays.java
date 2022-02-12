@@ -6,14 +6,12 @@ public class Pays {
     private int superficie;
 
     public Pays(String nom, int population, int superficie) {
-        this.nom = nom;
-        this.population = population;
-        this.superficie = superficie;
+        setNom(nom);
+        setPopulation(population);
+        setSuperficie(superficie);
     }
 
-    public String getNom() {
-        return nom;
-    }
+    public String getNom() { return nom; }
 
     public void setNom(String nom) {
         this.nom = nom;

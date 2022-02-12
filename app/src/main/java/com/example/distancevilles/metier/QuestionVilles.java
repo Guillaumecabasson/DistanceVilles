@@ -8,10 +8,10 @@ public class QuestionVilles {
     private int ind_reponse;
 
     public QuestionVilles(int number, Ville ville, Ville[] reponses, int ind_reponse) {
-        this.number = number;
-        this.ville = ville;
-        this.reponses = reponses;
-        this.ind_reponse = ind_reponse;
+        setNumber(number);
+        setVille(ville);
+        setReponses(reponses);
+        setInd_reponse(ind_reponse);
     }
 
     public int getNumber() {
