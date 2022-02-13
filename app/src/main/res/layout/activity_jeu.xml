@@ -52,26 +52,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <RadioButton
-                android:id="@+id/answer1"
+            <Button
+                android:id="@+id/btn_answer1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:text="Button" />
 
-            <RadioButton
-                android:id="@+id/answer2"
+            <Button
+                android:id="@+id/btn_answer2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="RadioButton" />
+                android:text="Button" />
+
         </RadioGroup>
-
-        <Button
-            android:id="@+id/btn_validate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:background="@color/green"
-            android:text="@string/btn_valider" />
 
     </LinearLayout>
 

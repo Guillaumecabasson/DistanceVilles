@@ -21,9 +21,8 @@ public class ActivityJeu extends Activity {
     private ArrayList<QuestionVilles> questionVilles;
     private int question_actuelle;
     RadioGroup answers;
-    RadioButton answer1, answer2;
+    Button btn_answer1, btn_answer2;
     TextView textview_question;
-    Button buttonValider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,35 +32,18 @@ public class ActivityJeu extends Activity {
         this.questionVilles = Utils.initialiseQuestionsVilles();
         this.question_actuelle = 0;
         answers = (RadioGroup) (this.findViewById(R.id.radio_group));
-        answer1 = (RadioButton) (this.findViewById(R.id.answer1));
-        answer2 = (RadioButton)(this.findViewById(R.id.answer2));
+        btn_answer1 = (Button) (this.findViewById(R.id.btn_answer1));
+        btn_answer2 = (Button)(this.findViewById(R.id.btn_answer2));
         textview_question = (TextView) (this.findViewById(R.id.question));
 
-        this.buttonValider = (Button) this.findViewById(R.id.btn_validate);
-        buttonValider.setOnClickListener(new View.OnClickListener() {
+        btn_answer1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean isCorrectAnswer = false;
-                String radiovalue = "";
+                String radiovalue = (String) btn_answer1.getText();
 
-                if (answers.getCheckedRadioButtonId() == -1) {
-                    Toast toast = Toast.makeText(getBaseContext(), "Il faut cocher au moins une des réponses", Toast.LENGTH_SHORT);
-                    toast.show();
-                }
-                else { // one of the radio buttons is checked
-                    // get selected radioButton from radioGroup
-                    int selectedId = answers.getCheckedRadioButtonId();
-                    // find the radioButton by returned id
-                    RadioButton radioButton = (RadioButton)findViewById(selectedId);
-                    // radioButton text
-                    radiovalue = (String) radioButton.getText();
-                    Toast toast = Toast.makeText(getBaseContext(), "Votre réponse est " + radiovalue, Toast.LENGTH_SHORT);
-                    toast.show();
-
-                    // Toast.makeText(activity, "bbb:" + questions.get(numberQ).getReponses()[questions.get(numberQ).getInd_reponse()].getNom(), Toast.LENGTH_SHORT).show();
-                    if(questionVilles.get(question_actuelle).getReponses()[questionVilles.get(question_actuelle).getInd_reponse()].getNom().equals(radiovalue)){
-                        isCorrectAnswer = true;
-                    }
+                if(questionVilles.get(question_actuelle).getReponses()[questionVilles.get(question_actuelle).getInd_reponse()].getNom().equals(radiovalue)){
+                    isCorrectAnswer = true;
                 }
 
                 Intent intent = new  Intent(getBaseContext(), ActivityDisplayAnswer.class);
@@ -92,10 +74,9 @@ public class ActivityJeu extends Activity {
         String textToDisplay = "Quelle est la ville la plus proche de " + questionVilles.get(question_actuelle).getVille().getNom() + " ?" ;
         textview_question.setText(textToDisplay);
 
-
-        for(int i=0; i < answers.getChildCount(); i++){
-            ((RadioButton) answers.getChildAt(i)).setText(String.valueOf(questionVilles.get(question_actuelle).getReponses()[i].getNom()));
-        }
+        //Faire ça dans une fonction éventuellement, liste de boutons ? Ou juste pour mettre ça dans Utils ?
+        btn_answer1.setText(questionVilles.get(question_actuelle).getReponses()[0].getNom());
+        btn_answer2.setText(questionVilles.get(question_actuelle).getReponses()[1].getNom());
     }
 
     @Override
