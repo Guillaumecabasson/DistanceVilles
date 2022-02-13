@@ -87,4 +87,7 @@ public class ActivityJeu extends Activity {
             ((RadioButton) answers.getChildAt(i)).setText(String.valueOf(questionVilles.get(0).getReponses()[i].getNom()));
         }
     }
+
+    @Override
+    public void onBackPressed() { } // "Neutralise" le bouton back propre au téléphone
 }

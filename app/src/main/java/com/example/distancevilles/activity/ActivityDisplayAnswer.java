@@ -37,4 +37,10 @@ public class ActivityDisplayAnswer extends Activity {
             }
         }
     }
+
+    @Override
+    public void onBackPressed() { // "Neutralise" le bouton back propre au téléphone
+       // if (shouldAllowBack()) { super.onBackPressed(); }
+       // else { doSomething(); }
+    }
 }
