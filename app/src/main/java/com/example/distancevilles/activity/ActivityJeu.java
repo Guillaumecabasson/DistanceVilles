@@ -41,6 +41,7 @@ public class ActivityJeu extends Activity {
         buttonValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean isCorrectAnswer = false;
                 String radiovalue = "";
 
                 if (answers.getCheckedRadioButtonId() == -1) {
@@ -59,19 +60,15 @@ public class ActivityJeu extends Activity {
                     Toast toast = Toast.makeText(getBaseContext(), "Votre réponse est " + radiovalue, Toast.LENGTH_SHORT);
                     toast.show();
 
-                    // Toast.makeText(activity, "aaa:" + questions.get(numberQ).getVille().getNom(), Toast.LENGTH_SHORT).show();
                     // Toast.makeText(activity, "bbb:" + questions.get(numberQ).getReponses()[questions.get(numberQ).getInd_reponse()].getNom(), Toast.LENGTH_SHORT).show();
                     if(questionVilles.get(question_actuelle).getReponses()[questionVilles.get(question_actuelle).getInd_reponse()].getNom().equals(radiovalue)){
-                        toast = Toast.makeText(getBaseContext(), "Votre réponse est correcte", Toast.LENGTH_SHORT);
+                        isCorrectAnswer = true;
                     }
-                    else {
-                        toast = Toast.makeText(getBaseContext(), "Votre réponse est incorrecte", Toast.LENGTH_SHORT);
-                    }
-                    toast.show();
                 }
 
                 Intent intent = new  Intent(getBaseContext(), ActivityDisplayAnswer.class);
-                intent.putExtra("reponse", radiovalue);
+                intent.putExtra("user_answer", radiovalue);
+                intent.putExtra("isCorrect", isCorrectAnswer);
                 startActivity(intent);
             }
         });

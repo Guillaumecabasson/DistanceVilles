@@ -17,15 +17,24 @@ public class ActivityDisplayAnswer extends Activity {
 
         Intent intent = getIntent();
         if (intent != null){
-            String user_reponse = "";
-            if (intent.hasExtra("reponse")){
-                user_reponse = intent.getStringExtra("reponse");
+            String user_answer = "";
+            boolean isCorrect = false;
+            if (intent.hasExtra("user_answer")){
+                user_answer = intent.getStringExtra("user_answer");
+            }
+            if (intent.hasExtra("isCorrect")){
+                isCorrect = intent.getBooleanExtra("isCorrect", false);
             }
             TextView textView = (TextView) findViewById(R.id.answer);
-            textView.setText("---> " + user_reponse);
+
+            if (isCorrect) {
+                String text = "Félicitations, " + user_answer + " était la bonne réponse";
+                textView.setText(text);
+            }
+            else {
+                String text = "Malheureusement, " + user_answer + " n'était pas la bonne réponse";
+                textView.setText(text);
+            }
         }
-
-        Toast.makeText(getApplicationContext(), "We are moved to second Activity",Toast.LENGTH_LONG).show();
     }
-
 }
