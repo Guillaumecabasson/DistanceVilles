@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class ActivityJeu extends Activity {
 
     private ArrayList<QuestionVilles> questionVilles;
-    private int niveau;
+    private int question_actuelle;
     RadioGroup answers;
     RadioButton answer1, answer2;
     TextView textview_question;
@@ -31,14 +31,14 @@ public class ActivityJeu extends Activity {
         setContentView(R.layout.activity_jeu);
 
         this.questionVilles = Utils.initialiseQuestionsVilles();
-
+        this.question_actuelle = 0;
         answers = (RadioGroup) (this.findViewById(R.id.radio_group));
         answer1 = (RadioButton) (this.findViewById(R.id.answer1));
         answer2 = (RadioButton)(this.findViewById(R.id.answer2));
         textview_question = (TextView) (this.findViewById(R.id.question));
 
         this.buttonValider = (Button) this.findViewById(R.id.btn_validate);
-        this.buttonValider.setOnClickListener(new ListenerValiderReponse(this, answers));
+        this.buttonValider.setOnClickListener(new ListenerValiderReponse(this, answers, questionVilles, question_actuelle));
     }
 
     @Override
@@ -48,6 +48,7 @@ public class ActivityJeu extends Activity {
 
         String textToDisplay = "Quelle est la ville la plus proche de " + questionVilles.get(0).getVille().getNom() + " ?" ;
         textview_question.setText(textToDisplay);
+
 
         for(int i=0; i < answers.getChildCount(); i++){
             ((RadioButton) answers.getChildAt(i)).setText(String.valueOf(questionVilles.get(0).getReponses()[i].getNom()));

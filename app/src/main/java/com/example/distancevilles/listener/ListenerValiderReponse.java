@@ -11,15 +11,22 @@ import android.widget.Toast;
 
 import com.example.distancevilles.R;
 import com.example.distancevilles.activity.ActivityJeu;
+import com.example.distancevilles.metier.QuestionVilles;
+
+import java.util.ArrayList;
 
 public class ListenerValiderReponse implements Button.OnClickListener  {
 
     Activity activity;
     RadioGroup radio_answers;
+    ArrayList<QuestionVilles> questions;
+    int numberQ;
 
-    public ListenerValiderReponse(Activity activity, RadioGroup radiogroup){
+    public ListenerValiderReponse(Activity activity, RadioGroup radiogroup, ArrayList<QuestionVilles> questions, int numberQ){
         this.activity = activity;
         this.radio_answers = radiogroup;
+        this.questions = questions;
+        this.numberQ = numberQ;
     }
 
     @Override
@@ -40,8 +47,18 @@ public class ListenerValiderReponse implements Button.OnClickListener  {
             RadioButton radioButton = (RadioButton)activity.findViewById(selectedId);
 
             // radioButton text
-            CharSequence radiovalue = radioButton.getText();
+            String radiovalue = (String) radioButton.getText();
             Toast toast = Toast.makeText(activity, "Votre réponse est " + radiovalue, Toast.LENGTH_SHORT);
+            toast.show();
+
+            // Toast.makeText(activity, "aaa:" + questions.get(numberQ).getVille().getNom(), Toast.LENGTH_SHORT).show();
+            // Toast.makeText(activity, "bbb:" + questions.get(numberQ).getReponses()[questions.get(numberQ).getInd_reponse()].getNom(), Toast.LENGTH_SHORT).show();
+            if(questions.get(numberQ).getReponses()[questions.get(numberQ).getInd_reponse()].getNom().equals(radiovalue)){
+                toast = Toast.makeText(activity, "Votre réponse est correcte", Toast.LENGTH_SHORT);
+            }
+            else {
+                toast = Toast.makeText(activity, "Votre réponse est incorrecte", Toast.LENGTH_SHORT);
+            }
             toast.show();
         }
     }
