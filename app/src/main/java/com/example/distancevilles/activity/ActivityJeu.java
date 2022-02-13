@@ -51,10 +51,8 @@ public class ActivityJeu extends Activity {
                 else { // one of the radio buttons is checked
                     // get selected radioButton from radioGroup
                     int selectedId = answers.getCheckedRadioButtonId();
-
                     // find the radioButton by returned id
                     RadioButton radioButton = (RadioButton)findViewById(selectedId);
-
                     // radioButton text
                     radiovalue = (String) radioButton.getText();
                     Toast toast = Toast.makeText(getBaseContext(), "Votre réponse est " + radiovalue, Toast.LENGTH_SHORT);
@@ -69,6 +67,7 @@ public class ActivityJeu extends Activity {
                 Intent intent = new  Intent(getBaseContext(), ActivityDisplayAnswer.class);
                 intent.putExtra("user_answer", radiovalue);
                 intent.putExtra("isCorrect", isCorrectAnswer);
+                intent.putExtra("actual_question", question_actuelle);
                 startActivity(intent);
             }
         });
@@ -79,12 +78,23 @@ public class ActivityJeu extends Activity {
     {
         super.onStart();
 
-        String textToDisplay = "Quelle est la ville la plus proche de " + questionVilles.get(0).getVille().getNom() + " ?" ;
+        //On doit vérifier que l'on ne revient pas d'une ActivityDisplayAnswer
+        Intent intent = getIntent();
+        if (intent != null){
+            if (intent.hasExtra("actual_question")){
+                this.question_actuelle = intent.getIntExtra("actual_question", 0);
+                Toast.makeText(this, "question actuelle:" + question_actuelle, Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        Toast.makeText(this, "question actuelle:" + question_actuelle, Toast.LENGTH_SHORT).show();
+
+        String textToDisplay = "Quelle est la ville la plus proche de " + questionVilles.get(question_actuelle).getVille().getNom() + " ?" ;
         textview_question.setText(textToDisplay);
 
 
         for(int i=0; i < answers.getChildCount(); i++){
-            ((RadioButton) answers.getChildAt(i)).setText(String.valueOf(questionVilles.get(0).getReponses()[i].getNom()));
+            ((RadioButton) answers.getChildAt(i)).setText(String.valueOf(questionVilles.get(question_actuelle).getReponses()[i].getNom()));
         }
     }
 
