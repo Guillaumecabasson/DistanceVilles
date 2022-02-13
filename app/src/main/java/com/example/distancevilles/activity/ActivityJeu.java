@@ -38,7 +38,7 @@ public class ActivityJeu extends Activity {
         textview_question = (TextView) (this.findViewById(R.id.question));
 
         this.buttonValider = (Button) this.findViewById(R.id.btn_validate);
-        this.buttonValider.setOnClickListener(new ListenerValiderReponse(this));
+        this.buttonValider.setOnClickListener(new ListenerValiderReponse(this, answers));
     }
 
     @Override
