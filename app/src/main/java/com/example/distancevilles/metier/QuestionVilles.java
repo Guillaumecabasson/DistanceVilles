@@ -34,9 +34,11 @@ public class QuestionVilles {
         this.distances[0] = haversine(ville.getLatitude(), ville.getLongitude(), reponses[0].getLatitude(), reponses[0].getLongitude());
         this.distances[1] = haversine(ville.getLatitude(), ville.getLongitude(), reponses[1].getLatitude(), reponses[1].getLongitude());
 
-        // double rad = 180 / Math.PI;
-        // this.distances[0] = (double) (EARTH_RADIUS * Math.PI * Math.sqrt((ville.getLatitude() - reponses[0].getLatitude()) * (ville.getLatitude() - reponses[0].getLatitude()) + Math.cos(ville.getLatitude() / rad) * Math.cos(reponses[0].getLatitude() / rad) * (ville.getLongitude() - reponses[0].getLongitude()) * (ville.getLongitude() - reponses[0].getLongitude())) / 180);
-        // this.distances[1] = (double) (EARTH_RADIUS * Math.PI * Math.sqrt((ville.getLatitude() - reponses[1].getLatitude()) * (ville.getLatitude() - reponses[1].getLatitude()) + Math.cos(ville.getLatitude() / rad) * Math.cos(reponses[1].getLatitude() / rad) * (ville.getLongitude() - reponses[1].getLongitude()) * (ville.getLongitude() - reponses[1].getLongitude())) / 180);
+        /*
+        double rad = 180 / Math.PI;
+        this.distances[0] = (double) (EARTH_RADIUS * Math.PI * Math.sqrt((ville.getLatitude() - reponses[0].getLatitude()) * (ville.getLatitude() - reponses[0].getLatitude()) + Math.cos(ville.getLatitude() / rad) * Math.cos(reponses[0].getLatitude() / rad) * (ville.getLongitude() - reponses[0].getLongitude()) * (ville.getLongitude() - reponses[0].getLongitude())) / 180);
+        this.distances[1] = (double) (EARTH_RADIUS * Math.PI * Math.sqrt((ville.getLatitude() - reponses[1].getLatitude()) * (ville.getLatitude() - reponses[1].getLatitude()) + Math.cos(ville.getLatitude() / rad) * Math.cos(reponses[1].getLatitude() / rad) * (ville.getLongitude() - reponses[1].getLongitude()) * (ville.getLongitude() - reponses[1].getLongitude())) / 180);
+        */
 
         if (distances[0] <= distances[1]) { // ou égal ?
             setInd_reponse(0);
