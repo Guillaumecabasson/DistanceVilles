@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,9 +18,8 @@ public class ActivityJeu extends Activity {
 
     private ArrayList<QuestionVilles> questionVilles;
     private int question_actuelle;
-    RadioGroup answers;
     Button btn_answer1, btn_answer2;
-    TextView textview_question;
+    TextView view_nb_question, textview_question;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +28,9 @@ public class ActivityJeu extends Activity {
 
         this.questionVilles = Utils.initialiseQuestionsVilles();
         this.question_actuelle = 0;
-        answers = (RadioGroup) (this.findViewById(R.id.radio_group));
         btn_answer1 = (Button) (this.findViewById(R.id.btn_answer1));
         btn_answer2 = (Button)(this.findViewById(R.id.btn_answer2));
+        view_nb_question = (TextView) (this.findViewById(R.id.view_nb_question));
         textview_question = (TextView) (this.findViewById(R.id.question));
 
         btn_answer1.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +68,9 @@ public class ActivityJeu extends Activity {
 
         Toast.makeText(this, "question actuelle:" + question_actuelle, Toast.LENGTH_SHORT).show();
 
+        String textview_nbquestion = "Question " + (question_actuelle+1);
+        view_nb_question.setText(textview_nbquestion);
+        
         String textToDisplay = "Quelle est la ville la plus proche de " + questionVilles.get(question_actuelle).getVille().getNom() + " ?" ;
         textview_question.setText(textToDisplay);
 
