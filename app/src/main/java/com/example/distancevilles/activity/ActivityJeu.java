@@ -62,15 +62,12 @@ public class ActivityJeu extends Activity {
         if (intent != null){
             if (intent.hasExtra("actual_question")){
                 this.question_actuelle = intent.getIntExtra("actual_question", 0);
-                Toast.makeText(this, "question actuelle:" + question_actuelle, Toast.LENGTH_SHORT).show();
             }
         }
 
-        Toast.makeText(this, "question actuelle:" + question_actuelle, Toast.LENGTH_SHORT).show();
-
         String textview_nbquestion = "Question " + (question_actuelle+1);
         view_nb_question.setText(textview_nbquestion);
-        
+
         String textToDisplay = "Quelle est la ville la plus proche de " + questionVilles.get(question_actuelle).getVille().getNom() + " ?" ;
         textview_question.setText(textToDisplay);
 
