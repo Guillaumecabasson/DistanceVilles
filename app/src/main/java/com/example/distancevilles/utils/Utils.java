@@ -25,10 +25,10 @@ public class Utils {
         Ville Nice = new Ville("Toulouse", 43.7009358, 7.2683912, 0);
 
         ArrayList<QuestionVilles> questions = new ArrayList<QuestionVilles>();
-        questions.add(new QuestionVilles(0, Metz, new Ville[]{ Nancy, Paris }));
-        questions.add(new QuestionVilles(0, Paris, new Ville[]{ Marseille, Lille }));
-        questions.add(new QuestionVilles(0, Strasbourg, new Ville[]{ Nantes, Lyon }));
-        questions.add(new QuestionVilles(0, Nantes, new Ville[]{ Toulouse, Nice }));
+        questions.add(new QuestionVilles(2, 1, Metz, new Ville[]{ Nancy, Paris }));
+        questions.add(new QuestionVilles(2, 2, Paris, new Ville[]{ Marseille, Lille }));
+        questions.add(new QuestionVilles(2, 3, Strasbourg, new Ville[]{ Nantes, Lyon }));
+        questions.add(new QuestionVilles(2, 4, Nantes, new Ville[]{ Toulouse, Nice }));
 
 //        for(i=0;i<10;i++){ //tirage de villes au hasard parmi celles dispo et création de questions
 //

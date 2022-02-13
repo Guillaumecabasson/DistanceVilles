@@ -69,8 +69,8 @@
             android:id="@+id/btn_validate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/green"
             android:layout_gravity="bottom|end"
+            android:background="@color/green"
             android:text="@string/btn_valider" />
 
     </LinearLayout>

@@ -2,11 +2,15 @@ package com.example.distancevilles.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.example.distancevilles.R;
+import com.example.distancevilles.listener.ListenerBoutonJouer;
+import com.example.distancevilles.listener.ListenerBoutonQuitter;
+import com.example.distancevilles.listener.ListenerValiderReponse;
 import com.example.distancevilles.metier.QuestionVilles;
 import com.example.distancevilles.utils.Utils;
 
@@ -19,6 +23,7 @@ public class ActivityJeu extends Activity {
     RadioGroup answers;
     RadioButton answer1, answer2;
     TextView textview_question;
+    Button buttonValider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,8 @@ public class ActivityJeu extends Activity {
         answer2 = (RadioButton)(this.findViewById(R.id.answer2));
         textview_question = (TextView) (this.findViewById(R.id.question));
 
+        this.buttonValider = (Button) this.findViewById(R.id.btn_validate);
+        this.buttonValider.setOnClickListener(new ListenerValiderReponse(this));
     }
 
     @Override
