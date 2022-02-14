@@ -7,15 +7,13 @@ public class QuestionVilles {
     final double EARTH_RADIUS = 6371.009;
 
     private int nbr_reponses;
-    private int number;
     private Ville ville;
     private Ville[] reponses;
     private double[] distances;
     private int ind_reponse;
 
-    public QuestionVilles(int nbr_reponses, int number, Ville ville, Ville[] reponses) {
+    public QuestionVilles(int nbr_reponses, Ville ville, Ville[] reponses) {
         setNbr_reponses(nbr_reponses);
-        setNumber(number);
         setVille(ville);
         setReponses(reponses);
         setDistances(new double[nbr_reponses]);
@@ -64,12 +62,6 @@ public class QuestionVilles {
 
     public void setNbr_reponses(int nbr_reponses) {
         this.nbr_reponses = nbr_reponses;
-    }
-
-    public int getNumber() { return number; }
-
-    public void setNumber(int number) {
-        this.number = number;
     }
 
     public Ville getVille() {

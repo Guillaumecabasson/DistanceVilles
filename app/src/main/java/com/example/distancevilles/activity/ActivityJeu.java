@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class ActivityJeu extends Activity {
 
-    private ArrayList<QuestionVilles> questionVilles;
+    private QuestionVilles questionVilles;
     private int question_actuelle;
     Button btn_answer1, btn_answer2;
     TextView view_nb_question, textview_question;
@@ -26,7 +26,7 @@ public class ActivityJeu extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jeu);
 
-        this.questionVilles = Utils.initialiseQuestionsVilles();
+        this.questionVilles = Utils.initialiseQuestionVilles();
         this.question_actuelle = 0;
         btn_answer1 = (Button) (this.findViewById(R.id.btn_answer1));
         btn_answer2 = (Button)(this.findViewById(R.id.btn_answer2));
@@ -39,7 +39,7 @@ public class ActivityJeu extends Activity {
                 boolean isCorrectAnswer = false;
                 String radiovalue = (String) btn_answer1.getText();
 
-                if(questionVilles.get(question_actuelle).getReponses()[questionVilles.get(question_actuelle).getInd_reponse()].getNom().equals(radiovalue)){
+                if(questionVilles.getReponses()[questionVilles.getInd_reponse()].getNom().equals(radiovalue)){
                     isCorrectAnswer = true;
                 }
 
@@ -57,7 +57,7 @@ public class ActivityJeu extends Activity {
                 boolean isCorrectAnswer = false;
                 String radiovalue = (String) btn_answer2.getText();
 
-                if(questionVilles.get(question_actuelle).getReponses()[questionVilles.get(question_actuelle).getInd_reponse()].getNom().equals(radiovalue)){
+                if(questionVilles.getReponses()[questionVilles.getInd_reponse()].getNom().equals(radiovalue)){
                     isCorrectAnswer = true;
                 }
 
@@ -68,12 +68,6 @@ public class ActivityJeu extends Activity {
                 startActivity(intent);
             }
         });
-    }
-
-    @Override
-    protected void onStart()
-    {
-        super.onStart();
 
         //On doit vérifier que l'on ne revient pas d'une ActivityDisplayAnswer
         Intent intent = getIntent();
@@ -83,15 +77,24 @@ public class ActivityJeu extends Activity {
             }
         }
 
-        String textview_nbquestion = "Question " + (question_actuelle+1);
-        view_nb_question.setText(textview_nbquestion);
+    }
 
-        String textToDisplay = "Quelle est la ville la plus proche de " + questionVilles.get(question_actuelle).getVille().getNom() + " ?" ;
+    @Override
+    protected void onStart()
+    {
+        super.onStart();
+
+        Toast.makeText(getBaseContext(), "Vous avez :" + question_actuelle + " points.", Toast.LENGTH_SHORT).show();
+
+        String textview_nb_question = "Question " + (question_actuelle+1);
+        view_nb_question.setText(textview_nb_question);
+
+        String textToDisplay = "Quelle est la ville la plus proche de " + questionVilles.getVille().getNom() + " ?" ;
         textview_question.setText(textToDisplay);
 
         //Faire ça dans une fonction éventuellement, liste de boutons ? Ou juste pour mettre ça dans Utils ?
-        btn_answer1.setText(questionVilles.get(question_actuelle).getReponses()[0].getNom());
-        btn_answer2.setText(questionVilles.get(question_actuelle).getReponses()[1].getNom());
+        btn_answer1.setText(questionVilles.getReponses()[0].getNom());
+        btn_answer2.setText(questionVilles.getReponses()[1].getNom());
     }
 
     @Override

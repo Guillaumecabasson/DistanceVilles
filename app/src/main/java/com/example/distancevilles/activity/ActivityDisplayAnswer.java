@@ -54,6 +54,8 @@ public class ActivityDisplayAnswer extends Activity {
                 Intent intent = new  Intent(getBaseContext(), ActivityJeu.class);
                 intent.putExtra("actual_question", actual_question);
                 startActivity(intent);
+
+                // Toast.makeText(getBaseContext(), "question actuelle:" + actual_question, Toast.LENGTH_SHORT).show();
             }
         });
     }
