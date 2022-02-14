@@ -21,6 +21,7 @@ public class ActivityJeu extends Activity {
     private int question_actuelle;
     Button btn_answer1, btn_answer2;
     TextView view_nb_question, textview_question;
+    TextView tx_score;
 
 
     @Override
@@ -35,6 +36,7 @@ public class ActivityJeu extends Activity {
         btn_answer2 = (Button)(this.findViewById(R.id.btn_answer2));
         view_nb_question = (TextView) (this.findViewById(R.id.view_nb_question));
         textview_question = (TextView) (this.findViewById(R.id.question));
+        tx_score = (TextView) (this.findViewById(R.id.aff_score));
 
         btn_answer1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +96,8 @@ public class ActivityJeu extends Activity {
     {
         super.onStart();
 
-        Toast.makeText(getBaseContext(), "Vous avez :" + nb_points + " points.", Toast.LENGTH_SHORT).show();
+        String textview_score = "Score : " + nb_points;
+        tx_score.setText(textview_score);
 
         String textview_nb_question = "Question " + (question_actuelle+1);
         view_nb_question.setText(textview_nb_question);
