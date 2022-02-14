@@ -14,6 +14,7 @@ import com.example.distancevilles.R;
 public class ActivityDisplayAnswer extends Activity {
 
     int actual_question;
+    int points;
     String user_answer;
     boolean isCorrect;
 
@@ -36,15 +37,18 @@ public class ActivityDisplayAnswer extends Activity {
             if (intent.hasExtra("actual_question")){
                 actual_question = intent.getIntExtra("actual_question", 0);
             }
+            if (intent.hasExtra("points")){
+                points = intent.getIntExtra("points", 0);
+            }
 
+            String text = "";
             if (isCorrect) {
-                String text = "Félicitations, " + user_answer + " était la bonne réponse";
-                textView.setText(text);
+                text = "Félicitations, " + user_answer + " était la bonne réponse";
             }
             else {
-                String text = "Malheureusement, " + user_answer + " n'était pas la bonne réponse";
-                textView.setText(text);
+                text = "Malheureusement, " + user_answer + " n'était pas la bonne réponse";
             }
+            textView.setText(text);
         }
 
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +57,7 @@ public class ActivityDisplayAnswer extends Activity {
                 actual_question++;
                 Intent intent = new  Intent(getBaseContext(), ActivityJeu.class);
                 intent.putExtra("actual_question", actual_question);
+                intent.putExtra("points", points);
                 startActivity(intent);
 
                 // Toast.makeText(getBaseContext(), "question actuelle:" + actual_question, Toast.LENGTH_SHORT).show();

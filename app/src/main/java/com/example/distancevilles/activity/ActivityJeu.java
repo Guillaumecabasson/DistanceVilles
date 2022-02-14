@@ -17,9 +17,11 @@ import java.util.ArrayList;
 public class ActivityJeu extends Activity {
 
     private QuestionVilles questionVilles;
+    private int nb_points;
     private int question_actuelle;
     Button btn_answer1, btn_answer2;
     TextView view_nb_question, textview_question;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,7 @@ public class ActivityJeu extends Activity {
 
         this.questionVilles = Utils.initialiseQuestionVilles();
         this.question_actuelle = 0;
+        this.nb_points = 0;
         btn_answer1 = (Button) (this.findViewById(R.id.btn_answer1));
         btn_answer2 = (Button)(this.findViewById(R.id.btn_answer2));
         view_nb_question = (TextView) (this.findViewById(R.id.view_nb_question));
@@ -41,12 +44,14 @@ public class ActivityJeu extends Activity {
 
                 if(questionVilles.getReponses()[questionVilles.getInd_reponse()].getNom().equals(radiovalue)){
                     isCorrectAnswer = true;
+                    nb_points++;
                 }
 
                 Intent intent = new  Intent(getBaseContext(), ActivityDisplayAnswer.class);
                 intent.putExtra("user_answer", radiovalue);
                 intent.putExtra("isCorrect", isCorrectAnswer);
                 intent.putExtra("actual_question", question_actuelle);
+                intent.putExtra("points", nb_points);
                 startActivity(intent);
             }
         });
@@ -59,12 +64,14 @@ public class ActivityJeu extends Activity {
 
                 if(questionVilles.getReponses()[questionVilles.getInd_reponse()].getNom().equals(radiovalue)){
                     isCorrectAnswer = true;
+                    nb_points++;
                 }
 
                 Intent intent = new  Intent(getBaseContext(), ActivityDisplayAnswer.class);
                 intent.putExtra("user_answer", radiovalue);
                 intent.putExtra("isCorrect", isCorrectAnswer);
                 intent.putExtra("actual_question", question_actuelle);
+                intent.putExtra("points", nb_points);
                 startActivity(intent);
             }
         });
@@ -75,6 +82,9 @@ public class ActivityJeu extends Activity {
             if (intent.hasExtra("actual_question")){
                 this.question_actuelle = intent.getIntExtra("actual_question", 0);
             }
+            if (intent.hasExtra("points")){
+                this.nb_points = intent.getIntExtra("points", 0);
+            }
         }
 
     }
@@ -84,7 +94,7 @@ public class ActivityJeu extends Activity {
     {
         super.onStart();
 
-        Toast.makeText(getBaseContext(), "Vous avez :" + question_actuelle + " points.", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), "Vous avez :" + nb_points + " points.", Toast.LENGTH_SHORT).show();
 
         String textview_nb_question = "Question " + (question_actuelle+1);
         view_nb_question.setText(textview_nb_question);
