@@ -15,6 +15,7 @@ public class ActivityDisplayAnswer extends Activity {
 
     int actual_question;
     int points;
+    int vies;
     String user_answer;
     boolean isCorrect;
 
@@ -40,6 +41,9 @@ public class ActivityDisplayAnswer extends Activity {
             if (intent.hasExtra("points")){
                 points = intent.getIntExtra("points", 0);
             }
+            if (intent.hasExtra("vies")){
+                vies = intent.getIntExtra("vies", 0);
+            }
 
             String text = "";
             if (isCorrect) {
@@ -58,6 +62,7 @@ public class ActivityDisplayAnswer extends Activity {
                 Intent intent = new  Intent(getBaseContext(), ActivityJeu.class);
                 intent.putExtra("actual_question", actual_question);
                 intent.putExtra("points", points);
+                intent.putExtra("vies", vies);
                 startActivity(intent);
 
                 // Toast.makeText(getBaseContext(), "question actuelle:" + actual_question, Toast.LENGTH_SHORT).show();
