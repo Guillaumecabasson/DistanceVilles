@@ -4,6 +4,7 @@ import com.example.distancevilles.metier.QuestionVilles;
 import com.example.distancevilles.metier.Ville;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Utils {
 
@@ -40,14 +41,26 @@ public class Utils {
                 Angers, Reims, ClermontFerrand, Troyes, Lorient, SaintEtienne, Metz, Bordeaux, Toulouse, Nancy};
 
         ArrayList<QuestionVilles> questions = new ArrayList<QuestionVilles>();
-        questions.add(new QuestionVilles(2, 1, Metz, new Ville[]{ Nancy, Paris }));
-        questions.add(new QuestionVilles(2, 2, Paris, new Ville[]{ Marseille, Lille }));
-        questions.add(new QuestionVilles(2, 3, Strasbourg, new Ville[]{ Nantes, Lyon }));
-        questions.add(new QuestionVilles(2, 4, Nantes, new Ville[]{ Toulouse, Nice }));
+//        questions.add(new QuestionVilles(2, 1, Metz, new Ville[]{ Nancy, Paris }));
+//        questions.add(new QuestionVilles(2, 2, Paris, new Ville[]{ Marseille, Lille }));
+//        questions.add(new QuestionVilles(2, 3, Strasbourg, new Ville[]{ Nantes, Lyon }));
+//        questions.add(new QuestionVilles(2, 4, Nantes, new Ville[]{ Toulouse, Nice }));
 
-//        for(i=0;i<10;i++){ //tirage de villes au hasard parmi celles dispo et création de questions
-//
-//        }
+        for(i=0;i<10;i++){ //on crée les questions
+            Random random = new Random();
+            int ind_ville_base = random.nextInt(villes.length-1); // entre 0 et villes.length
+            int ind_v1 = -1, ind_v2 = -1;
+            do{
+                ind_v1 = random.nextInt(villes.length-1); // entre 0 et villes.length
+            }
+            while(ind_v1 == ind_ville_base);
+            do{
+                ind_v2 = random.nextInt(villes.length-1); // entre 0 et villes.length
+            }
+            while(ind_v2 == ind_ville_base || ind_v2 == ind_v1);
+
+            questions.add(new QuestionVilles(2, i, villes[ind_ville_base], new Ville[]{ villes[ind_v1], villes[ind_v2] }));
+        }
         return questions;
     }
 

@@ -50,6 +50,24 @@ public class ActivityJeu extends Activity {
                 startActivity(intent);
             }
         });
+
+        btn_answer2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean isCorrectAnswer = false;
+                String radiovalue = (String) btn_answer2.getText();
+
+                if(questionVilles.get(question_actuelle).getReponses()[questionVilles.get(question_actuelle).getInd_reponse()].getNom().equals(radiovalue)){
+                    isCorrectAnswer = true;
+                }
+
+                Intent intent = new  Intent(getBaseContext(), ActivityDisplayAnswer.class);
+                intent.putExtra("user_answer", radiovalue);
+                intent.putExtra("isCorrect", isCorrectAnswer);
+                intent.putExtra("actual_question", question_actuelle);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
