@@ -37,7 +37,7 @@ public class Utils {
         Ville Toulouse = new Ville("Toulouse", 43.6044622, 1.4442469, 0);
         Ville Nancy = new Ville("Nancy", 48.6937223, 6.1834097, 0);
         Ville Vannes = new Ville("Vannes", 47.6586772, -2.7599079, 0);
-        Ville LaRochelle = new Ville("LaRochelle", 46.1591126, -1.1520434, 0);
+        Ville LaRochelle = new Ville("La Rochelle", 46.1591126, -1.1520434, 0);
         Ville Tours = new Ville("Tours", 47.3900474, 0.6889268, 0);
         Ville Limoges = new Ville("Limoges", 45.8354243, 1.2644847, 0);
         Ville Grenoble = new Ville("Grenoble", 45.1875602, 5.7357819, 0);

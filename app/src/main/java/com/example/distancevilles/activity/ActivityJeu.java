@@ -102,21 +102,28 @@ public class ActivityJeu extends Activity {
     {
         super.onStart();
 
-        String textview_score = "Score : " + nb_points;
-        tx_score.setText(textview_score);
+        if(nb_vies > 0) { // La partie continue
+            String textview_score = "Score : " + nb_points;
+            tx_score.setText(textview_score);
 
-        String textview_vies = "Vies : " + nb_vies;
-        tx_vies.setText(textview_vies);
+            String textview_vies = "Vies : " + nb_vies;
+            tx_vies.setText(textview_vies);
 
-        String textview_nb_question = "Question " + (question_actuelle+1);
-        view_nb_question.setText(textview_nb_question);
+            String textview_nb_question = "Question " + (question_actuelle+1);
+            view_nb_question.setText(textview_nb_question);
 
-        String textToDisplay = "Quelle est la ville la plus proche de " + questionVilles.getVille().getNom() + " ?" ;
-        textview_question.setText(textToDisplay);
+            String textToDisplay = "Quelle est la ville la plus proche de " + questionVilles.getVille().getNom() + " ?" ;
+            textview_question.setText(textToDisplay);
 
-        //Faire ça dans une fonction éventuellement, liste de boutons ? Ou juste pour mettre ça dans Utils ?
-        btn_answer1.setText(questionVilles.getReponses()[0].getNom());
-        btn_answer2.setText(questionVilles.getReponses()[1].getNom());
+            //Faire ça dans une fonction éventuellement, liste de boutons ? Ou juste pour mettre ça dans Utils ?
+            btn_answer1.setText(questionVilles.getReponses()[0].getNom());
+            btn_answer2.setText(questionVilles.getReponses()[1].getNom());
+        }
+        else { // Le joueur a perdu
+            Intent intent = new  Intent(getBaseContext(), ActivityPerdu.class);
+            startActivity(intent);
+        }
+
     }
 
     @Override
