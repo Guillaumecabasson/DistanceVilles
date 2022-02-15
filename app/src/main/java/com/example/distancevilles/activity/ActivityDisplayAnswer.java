@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import com.example.distancevilles.R;
 
+import java.text.DecimalFormat;
+
 public class ActivityDisplayAnswer extends Activity {
 
     int actual_question;
@@ -18,6 +20,7 @@ public class ActivityDisplayAnswer extends Activity {
     int vies;
     String user_answer;
     boolean isCorrect;
+    private double[] distances;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,9 @@ public class ActivityDisplayAnswer extends Activity {
             if (intent.hasExtra("vies")){
                 vies = intent.getIntExtra("vies", 0);
             }
+            if (intent.hasExtra("distances")){
+                distances = intent.getDoubleArrayExtra("distances");
+            }
 
             if (isCorrect) {
                 text = "Félicitations, " + user_answer + " était la bonne réponse";
@@ -57,9 +63,19 @@ public class ActivityDisplayAnswer extends Activity {
             }
         }
 
+        DecimalFormat df = new DecimalFormat("0.00");
+        String str = df.format(distances[0]);
+        String str2 = df.format(distances[1]);
+        str = str.replaceAll(",", ".");  // eventuellement
+        str2 = str2.replaceAll(",", ".");  // eventuellement
+        double dist01 = Double.parseDouble(str);
+        double dist02 = Double.parseDouble(str2);
+
         tv_phrase.setText(text);
-        tv_distance1.setText(text);
-        tv_distance2.setText(text);
+        String aff_text1 = "Distance entre A et B : " + dist01;
+        String aff_text2 = "Distance entre A et C : " + dist02;
+        tv_distance1.setText(aff_text1);
+        tv_distance2.setText(aff_text2);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
