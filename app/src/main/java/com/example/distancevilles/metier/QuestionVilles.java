@@ -1,8 +1,10 @@
 package com.example.distancevilles.metier;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.widget.Toast;
 
-public class QuestionVilles {
+public class QuestionVilles implements Parcelable {
 
     final double EARTH_RADIUS = 6371.009;
 
@@ -20,6 +22,26 @@ public class QuestionVilles {
 
         calcule_distances();
     }
+
+    protected QuestionVilles(Parcel in) {
+        nbr_reponses = in.readInt();
+        ville = in.readParcelable(Ville.class.getClassLoader());
+        reponses = in.createTypedArray(Ville.CREATOR);
+        distances = in.createDoubleArray();
+        ind_reponse = in.readInt();
+    }
+
+    public static final Creator<QuestionVilles> CREATOR = new Creator<QuestionVilles>() {
+        @Override
+        public QuestionVilles createFromParcel(Parcel in) {
+            return new QuestionVilles(in);
+        }
+
+        @Override
+        public QuestionVilles[] newArray(int size) {
+            return new QuestionVilles[size];
+        }
+    };
 
     /**
      *
@@ -88,5 +110,19 @@ public class QuestionVilles {
 
     public void setInd_reponse(int ind_reponse) {
         this.ind_reponse = ind_reponse;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(nbr_reponses);
+        parcel.writeParcelable(ville, i);
+        parcel.writeTypedArray(reponses, i);
+        parcel.writeDoubleArray(distances);
+        parcel.writeInt(ind_reponse);
     }
 }
