@@ -24,9 +24,13 @@ public class ActivityDisplayAnswer extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_answer);
 
-        TextView textView = (TextView) findViewById(R.id.answer);
+        TextView tv_phrase = (TextView) findViewById(R.id.answer);
         Button btn_back = (Button) findViewById(R.id.return_questions);
 
+        TextView tv_distance1 = (TextView) findViewById(R.id.tv_distance1);
+        TextView tv_distance2 = (TextView) findViewById(R.id.tv_distance2);
+
+        String text = "";
         Intent intent = getIntent();
         if (intent != null){
             if (intent.hasExtra("user_answer")){
@@ -45,16 +49,17 @@ public class ActivityDisplayAnswer extends Activity {
                 vies = intent.getIntExtra("vies", 0);
             }
 
-            String text = "";
             if (isCorrect) {
                 text = "Félicitations, " + user_answer + " était la bonne réponse";
             }
             else {
                 text = "Malheureusement, " + user_answer + " n'était pas la bonne réponse";
             }
-            textView.setText(text);
         }
 
+        tv_phrase.setText(text);
+        tv_distance1.setText(text);
+        tv_distance2.setText(text);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

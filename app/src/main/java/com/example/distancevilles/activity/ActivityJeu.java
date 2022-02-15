@@ -40,45 +40,11 @@ public class ActivityJeu extends Activity {
         tx_vies = (TextView) (this.findViewById(R.id.aff_vies));
 
         btn_answer1.setOnClickListener(v -> {
-            boolean isCorrectAnswer = false;
-            String radiovalue = (String) btn_answer1.getText();
-
-            if(questionVilles.getReponses()[questionVilles.getInd_reponse()].getNom().equals(radiovalue)){
-                isCorrectAnswer = true;
-                nb_points++;
-            }
-            else{
-                nb_vies--;
-            }
-
-            Intent intent = new  Intent(getBaseContext(), ActivityDisplayAnswer.class);
-            intent.putExtra("user_answer", radiovalue);
-            intent.putExtra("isCorrect", isCorrectAnswer);
-            intent.putExtra("actual_question", question_actuelle);
-            intent.putExtra("points", nb_points);
-            intent.putExtra("vies", nb_vies);
-            startActivity(intent);
+            launchActivityDisplayAnswer(btn_answer1);
         });
 
         btn_answer2.setOnClickListener(v -> {
-            boolean isCorrectAnswer = false;
-            String radiovalue = (String) btn_answer2.getText();
-
-            if(questionVilles.getReponses()[questionVilles.getInd_reponse()].getNom().equals(radiovalue)){
-                isCorrectAnswer = true;
-                nb_points++;
-            }
-            else{
-                nb_vies--;
-            }
-
-            Intent intent = new  Intent(getBaseContext(), ActivityDisplayAnswer.class);
-            intent.putExtra("user_answer", radiovalue);
-            intent.putExtra("isCorrect", isCorrectAnswer);
-            intent.putExtra("actual_question", question_actuelle);
-            intent.putExtra("points", nb_points);
-            intent.putExtra("vies", nb_vies);
-            startActivity(intent);
+            launchActivityDisplayAnswer(btn_answer2);
         });
 
         //On doit vérifier que l'on ne revient pas d'une ActivityDisplayAnswer
@@ -95,6 +61,27 @@ public class ActivityJeu extends Activity {
             }
         }
 
+    }
+
+    private void launchActivityDisplayAnswer(Button btn_answer) {
+        boolean isCorrectAnswer = false;
+        String user_answer = (String) btn_answer.getText();
+
+        if(questionVilles.getReponses()[questionVilles.getInd_reponse()].getNom().equals(user_answer)){
+            isCorrectAnswer = true;
+            nb_points++;
+        }
+        else{
+            nb_vies--;
+        }
+
+        Intent intent = new  Intent(getBaseContext(), ActivityDisplayAnswer.class);
+        intent.putExtra("user_answer", user_answer);
+        intent.putExtra("isCorrect", isCorrectAnswer);
+        intent.putExtra("actual_question", question_actuelle);
+        intent.putExtra("points", nb_points);
+        intent.putExtra("vies", nb_vies);
+        startActivity(intent);
     }
 
     @Override
