@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.distancevilles.R;
+import com.example.distancevilles.metier.QuestionVilles;
 
 import java.text.DecimalFormat;
 
@@ -20,7 +21,7 @@ public class ActivityDisplayAnswer extends Activity {
     int vies;
     String user_answer;
     boolean isCorrect;
-    private double[] distances;
+    private QuestionVilles qVille;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +52,8 @@ public class ActivityDisplayAnswer extends Activity {
             if (intent.hasExtra("vies")){
                 vies = intent.getIntExtra("vies", 0);
             }
-            if (intent.hasExtra("distances")){
-                distances = intent.getDoubleArrayExtra("distances");
+            if (intent.hasExtra("question")){
+                qVille = intent.getParcelableExtra("question");
             }
 
             if (isCorrect) {
@@ -63,17 +64,19 @@ public class ActivityDisplayAnswer extends Activity {
             }
         }
 
+        double db = qVille.getDistances()[0];
+
         DecimalFormat df = new DecimalFormat("0.00");
-        String str = df.format(distances[0]);
-        String str2 = df.format(distances[1]);
+        String str = df.format(qVille.getDistances()[0]);
+        String str2 = df.format(qVille.getDistances()[1]);
         str = str.replaceAll(",", ".");  // eventuellement
         str2 = str2.replaceAll(",", ".");  // eventuellement
         double dist01 = Double.parseDouble(str);
         double dist02 = Double.parseDouble(str2);
 
         tv_phrase.setText(text);
-        String aff_text1 = "Distance entre A et B : " + dist01;
-        String aff_text2 = "Distance entre A et C : " + dist02;
+        String aff_text1 = qVille.getVille().getNom() + " - " + qVille.getReponses()[0].getNom() + " : " + dist01 + " km";
+        String aff_text2 = qVille.getVille().getNom() + " - " + qVille.getReponses()[1].getNom() + " : " + dist02 + " km";
         tv_distance1.setText(aff_text1);
         tv_distance2.setText(aff_text2);
         btn_back.setOnClickListener(new View.OnClickListener() {

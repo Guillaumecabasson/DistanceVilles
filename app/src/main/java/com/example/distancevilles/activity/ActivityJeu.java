@@ -77,7 +77,7 @@ public class ActivityJeu extends Activity {
         intent.putExtra("actual_question", questionActuelle);
         intent.putExtra("points", nb_points);
         intent.putExtra("vies", nb_vies);
-        intent.putExtra("distances", questionVilles.getDistances());
+        intent.putExtra("question", questionVilles);
         startActivity(intent);
     }
 
