@@ -64,13 +64,11 @@ public class ActivityDisplayAnswer extends Activity {
             }
         }
 
-        double db = qVille.getDistances()[0];
-
         DecimalFormat df = new DecimalFormat("0.00");
         String str = df.format(qVille.getDistances()[0]);
         String str2 = df.format(qVille.getDistances()[1]);
-        str = str.replaceAll(",", ".");  // eventuellement
-        str2 = str2.replaceAll(",", ".");  // eventuellement
+        str = str.replaceAll(",", ".");
+        str2 = str2.replaceAll(",", ".");
         double dist01 = Double.parseDouble(str);
         double dist02 = Double.parseDouble(str2);
 

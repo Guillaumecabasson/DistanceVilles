@@ -14,13 +14,12 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            tools:text="Perdu..." />
+            android:text="Cette fois, c'est perdu..." />
 
         <Button
             android:id="@+id/btn_backToMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="ACCUEIL" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
