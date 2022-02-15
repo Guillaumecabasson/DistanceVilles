@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".activity.ActivityJeu">
 
     <LinearLayout
@@ -35,8 +36,7 @@
             android:id="@+id/view_nb_question"
             android:layout_width="match_parent"
             android:layout_height="50sp"
-            android:gravity="center"
-            android:text="Question 1" />
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/question"
