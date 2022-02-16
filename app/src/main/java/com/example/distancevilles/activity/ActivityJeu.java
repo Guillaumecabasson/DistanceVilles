@@ -5,16 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.distancevilles.R;
-import com.example.distancevilles.dao.JoueurService;
-import com.example.distancevilles.metier.Joueur;
 import com.example.distancevilles.metier.QuestionVilles;
 import com.example.distancevilles.utils.Utils;
 
 public class ActivityJeu extends Activity {
-
-    public static JoueurService joueurDAO;
 
     private QuestionVilles questionVilles;
     private int nb_points;
@@ -48,9 +45,6 @@ public class ActivityJeu extends Activity {
             launchActivityDisplayAnswer(btn_answer2);
         });
 
-        //recuperation des data bdd via la DAO
-        joueurDAO = JoueurService.getInstance(this);
-
         //On doit vérifier que l'on ne revient pas d'une ActivityDisplayAnswer
         Intent intent = getIntent();
         if (intent != null){
@@ -73,6 +67,7 @@ public class ActivityJeu extends Activity {
         if(questionVilles.getReponses()[questionVilles.getInd_reponse()].getNom().equals(user_answer)){
             isCorrectAnswer = true;
             nb_points++;
+            ActivityMenu.joueur.setScore(ActivityMenu.joueur.getScore()+1);
         }
         else{
             nb_vies--;
@@ -100,6 +95,7 @@ public class ActivityJeu extends Activity {
         if(nb_vies > 0) { // La partie continue
             String textview_score = "Score : " + nb_points;
             tx_score.setText(textview_score);
+            // Toast.makeText(this,ActivityMenu.joueur.getScore(),Toast.LENGTH_SHORT).show();
 
             String textview_vies = "Vies : " + nb_vies;
             tx_vies.setText(textview_vies);
@@ -116,7 +112,6 @@ public class ActivityJeu extends Activity {
         }
         else { // Le joueur a perdu
             Intent intent = new  Intent(getBaseContext(), ActivityPerdu.class);
-            intent.putExtra("username", ActivityMenu.joueur.getPseudo());
             startActivity(intent);
         }
     }

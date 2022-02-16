@@ -5,13 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.distancevilles.R;
-import com.example.distancevilles.metier.Joueur;
+import com.example.distancevilles.dao.JoueurService;
 
 public class ActivityPerdu extends Activity {
 
-    String username;
+    public static JoueurService joueurDAO;
     Button btn_backToMenu;
     TextView tv_perdu;
 
@@ -24,19 +25,22 @@ public class ActivityPerdu extends Activity {
         btn_backToMenu = this.findViewById(R.id.btn_backToMenu);
         btn_backToMenu.setOnClickListener(v -> {
             Intent intent = new  Intent(getBaseContext(), ActivityMenu.class);
-            intent.putExtra("username", ActivityMenu.joueur.getPseudo());
+            //intent.putExtra("username", username);
             startActivity(intent);
         });
 
-        Intent intent = getIntent();
-        if (intent != null){
-            if (intent.hasExtra("username")) {
-                username = intent.getStringExtra("username");
-            }
-        }
+//        Intent intent = getIntent();
+//        if (intent != null){
+//            if (intent.hasExtra("username")) {
+//                username = intent.getStringExtra("username");
+//            }
+//        }
 
-        String txt_perdu = "Dommage " + username + ", c'est perdu !";
+        String txt_perdu = "Dommage " + ActivityMenu.joueur.getPseudo() + ", c'est perdu !";
         tv_perdu.setText(txt_perdu);
+
+        //recuperation des data bdd via la DAO
+        joueurDAO = JoueurService.getInstance(this);
 
         saveScoreInBDD();
 
@@ -44,7 +48,8 @@ public class ActivityPerdu extends Activity {
 
     private void saveScoreInBDD() {
         //Création du site dans la bdd
-        ActivityMenu.joueur.setId(ActivityJeu.joueurDAO.create(ActivityMenu.joueur));
+        Toast.makeText(this,"Score : "+ActivityMenu.joueur.getScore(),Toast.LENGTH_SHORT).show(); // ???
+        ActivityMenu.joueur.setId(joueurDAO.create(ActivityMenu.joueur));
     }
 
 }

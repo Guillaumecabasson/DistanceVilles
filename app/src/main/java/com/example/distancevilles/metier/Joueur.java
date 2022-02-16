@@ -4,17 +4,17 @@ public class Joueur {
 
     private long id;
     private String pseudo;
-    private int record;
+    private int score;
 
     public Joueur(long id, String pseudo, int points) {
         setId(id);
         setPseudo(pseudo);
-        setRecord(points);
+        setScore(points);
     }
 
     public Joueur(String pseudo, int points) {
         setPseudo(pseudo);
-        setRecord(points);
+        setScore(points);
     }
 
     public long getId() {
@@ -33,12 +33,11 @@ public class Joueur {
         this.pseudo = pseudo;
     }
 
-    public int getRecord() {
-        return record;
+    public int getScore() {
+        return score;
     }
 
-    public void setRecord(int record) {
-        this.record = record;
+    public void setScore(int score) {
+        this.score = score;
     }
-
 }

@@ -7,13 +7,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.distancevilles.R;
-import com.example.distancevilles.listener.ListenerBoutonJouer;
 import com.example.distancevilles.listener.ListenerBoutonQuitter;
 import com.example.distancevilles.metier.Joueur;
 
 public class ActivityMenu extends Activity{
 
-    static Joueur joueur;
+    public static Joueur joueur = new Joueur("", 0);
+
     Button buttonJouer;
     Button buttonCompte;
     Button buttonQuitter;
@@ -28,7 +28,10 @@ public class ActivityMenu extends Activity{
         this.buttonQuitter = this.findViewById(R.id.buttonQuitter);
         this.textViewNom = this.findViewById(R.id.textViewNom);
 
-        buttonJouer.setOnClickListener(new ListenerBoutonJouer(this));
+        buttonJouer.setOnClickListener(v -> {
+            Intent intent = new  Intent(getBaseContext(), ActivityJeu.class);
+            startActivity(intent);
+        });
         buttonQuitter.setOnClickListener(new ListenerBoutonQuitter());
         buttonCompte.setOnClickListener(v -> {
             Intent intent = new  Intent(getBaseContext(), ActivityUser.class);
@@ -43,7 +46,9 @@ public class ActivityMenu extends Activity{
             }
         }
 
-        joueur = new Joueur(username, 0);
+        //joueur = new Joueur(username, 0); //idealement on le recupere de la bdd juste au-dessus
+        joueur.setPseudo(username);
+
         String helloUser = "Bonjour, " + joueur.getPseudo();
         textViewNom.setText(helloUser);
     }

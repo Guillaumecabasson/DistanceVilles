@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.distancevilles.R;
+import com.example.distancevilles.metier.Joueur;
 import com.example.distancevilles.metier.QuestionVilles;
 
 import java.text.DecimalFormat;
@@ -86,8 +87,6 @@ public class ActivityDisplayAnswer extends Activity {
                 intent.putExtra("points", points);
                 intent.putExtra("vies", vies);
                 startActivity(intent);
-
-                // Toast.makeText(getBaseContext(), "question actuelle:" + actual_question, Toast.LENGTH_SHORT).show();
             }
         });
     }

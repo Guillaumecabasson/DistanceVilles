@@ -120,7 +120,7 @@ public class SQLiteJoueurDao extends SQLiteDao<Joueur> implements ServiceDAO<Jou
         ContentValues values = new ContentValues();
 
         values.put(DatabaseHelper.COLUMN_JOUEUR_NAME, joueur.getPseudo());
-        values.put(DatabaseHelper.COLUMN_JOUEUR_BESTSCORE, joueur.getRecord());
+        values.put(DatabaseHelper.COLUMN_JOUEUR_BESTSCORE, joueur.getScore());
 
         return values;
     }
