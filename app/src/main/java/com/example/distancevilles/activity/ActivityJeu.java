@@ -14,6 +14,8 @@ import com.example.distancevilles.utils.Utils;
 
 public class ActivityJeu extends Activity {
 
+    public static JoueurService joueurDAO;
+
     private QuestionVilles questionVilles;
     private int nb_points;
     private int questionActuelle;
@@ -21,8 +23,6 @@ public class ActivityJeu extends Activity {
     Button btn_answer1, btn_answer2;
     TextView view_nb_question, textview_question;
     TextView tx_score, tx_vies;
-
-    private JoueurService joueurDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,11 +78,6 @@ public class ActivityJeu extends Activity {
             nb_vies--;
         }
 
-        Joueur joueur = new Joueur("pseudoTest", 20);
-
-        //Création du site dans la bdd
-        // joueur.setId(joueurDAO.create(joueur));
-
         Intent intent = new  Intent(getBaseContext(), ActivityDisplayAnswer.class);
         intent.putExtra("user_answer", user_answer);
         intent.putExtra("isCorrect", isCorrectAnswer);
@@ -121,7 +116,7 @@ public class ActivityJeu extends Activity {
         }
         else { // Le joueur a perdu
             Intent intent = new  Intent(getBaseContext(), ActivityPerdu.class);
-            intent.putExtra("username", ActivityMenu.user);
+            intent.putExtra("username", ActivityMenu.joueur.getPseudo());
             startActivity(intent);
         }
     }

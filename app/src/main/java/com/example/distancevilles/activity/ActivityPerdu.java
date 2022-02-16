@@ -24,6 +24,7 @@ public class ActivityPerdu extends Activity {
         btn_backToMenu = this.findViewById(R.id.btn_backToMenu);
         btn_backToMenu.setOnClickListener(v -> {
             Intent intent = new  Intent(getBaseContext(), ActivityMenu.class);
+            intent.putExtra("username", ActivityMenu.joueur.getPseudo());
             startActivity(intent);
         });
 
@@ -37,12 +38,13 @@ public class ActivityPerdu extends Activity {
         String txt_perdu = "Dommage " + username + ", c'est perdu !";
         tv_perdu.setText(txt_perdu);
 
-        //saveScore();
+        saveScoreInBDD();
 
     }
 
-    private void saveScore() {
-        Joueur joueur = new Joueur("Testeur", 99);
+    private void saveScoreInBDD() {
+        //Création du site dans la bdd
+        ActivityMenu.joueur.setId(ActivityJeu.joueurDAO.create(ActivityMenu.joueur));
     }
 
 }

@@ -9,11 +9,11 @@ import android.widget.TextView;
 import com.example.distancevilles.R;
 import com.example.distancevilles.listener.ListenerBoutonJouer;
 import com.example.distancevilles.listener.ListenerBoutonQuitter;
+import com.example.distancevilles.metier.Joueur;
 
 public class ActivityMenu extends Activity{
 
-    static String user;
-
+    static Joueur joueur;
     Button buttonJouer;
     Button buttonCompte;
     Button buttonQuitter;
@@ -35,14 +35,16 @@ public class ActivityMenu extends Activity{
             startActivity(intent);
         });
 
-        user = "Anonymous";
+        String username = "Anonymous";
         Intent intent = getIntent();
         if (intent != null){
-            if (intent.hasExtra("user")){
-                user = intent.getStringExtra("user");
+            if (intent.hasExtra("username")){ // depuis ActivityUser ou ActivityPerdu
+                username = intent.getStringExtra("username");
             }
         }
-        String helloUser = "Bonjour, " + user;
+
+        joueur = new Joueur(username, 0);
+        String helloUser = "Bonjour, " + joueur.getPseudo();
         textViewNom.setText(helloUser);
     }
 }

@@ -20,7 +20,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_CREATE_CATEGORY = "CREATE TABLE "
             + TABLE_JOUEUR
             + "(" + COLUMN_JOUEUR_ID + " INTEGER PRIMARY KEY NOT NULL, "
-            + COLUMN_JOUEUR_NAME + " TEXT NOT NULL, "
+            + COLUMN_JOUEUR_NAME + " TEXT UNIQUE NOT NULL, "
             + COLUMN_JOUEUR_BESTSCORE + " INTEGER );";
 
     public DatabaseHelper(Context context) {

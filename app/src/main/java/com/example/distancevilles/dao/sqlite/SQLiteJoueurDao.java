@@ -35,9 +35,7 @@ public class SQLiteJoueurDao extends SQLiteDao<Joueur> implements ServiceDAO<Jou
 
         ContentValues values = putContentValues(joueur);
 
-        long lastInsertedId = sqLiteDatabase.insert(DatabaseHelper.TABLE_JOUEUR,
-                null,
-                values);
+        long lastInsertedId = sqLiteDatabase.insert(DatabaseHelper.TABLE_JOUEUR, null, values);
 
         close();
 
@@ -89,7 +87,7 @@ public class SQLiteJoueurDao extends SQLiteDao<Joueur> implements ServiceDAO<Jou
     @Override
     public List<Joueur> findAll() {
         openReadable();
-        List<Joueur> categories = new LinkedList<>();
+        List<Joueur> joueursList = new LinkedList<>();
         String query = "SELECT  * FROM " + DatabaseHelper.TABLE_JOUEUR;
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
 
@@ -97,14 +95,14 @@ public class SQLiteJoueurDao extends SQLiteDao<Joueur> implements ServiceDAO<Jou
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             joueur = cursorToObject(cursor);
-            categories.add(joueur);
+            joueursList.add(joueur);
 
             cursor.moveToNext();
         }
         cursor.close();
         close();
 
-        return categories;
+        return joueursList;
     }
 
     @Override

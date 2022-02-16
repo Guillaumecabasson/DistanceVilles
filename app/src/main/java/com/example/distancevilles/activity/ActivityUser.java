@@ -23,7 +23,7 @@ public class ActivityUser extends Activity {
 
         btn_backMenu.setOnClickListener(v -> {
             Intent intent = new  Intent(getBaseContext(), ActivityMenu.class);
-            intent.putExtra("user", username_edit.getText().toString());
+            intent.putExtra("username", username_edit.getText().toString());
             startActivity(intent);
         });
 
