@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.example.distancevilles.R;
+import com.example.distancevilles.metier.Joueur;
 
 public class ActivityPerdu extends Activity {
 
@@ -21,10 +22,18 @@ public class ActivityPerdu extends Activity {
             Intent intent = new  Intent(getBaseContext(), ActivityMenu.class);
             startActivity(intent);
         });
+
+        saveScore();
+        
 //        Intent intent = getIntent();
 //        if (intent != null){
 //
 //        }
 
     }
+
+    private void saveScore() {
+        Joueur joueur = new Joueur("Testeur", 99);
+    }
+
 }

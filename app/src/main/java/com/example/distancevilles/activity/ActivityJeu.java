@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.distancevilles.R;
+import com.example.distancevilles.dao.JoueurService;
+import com.example.distancevilles.metier.Joueur;
 import com.example.distancevilles.metier.QuestionVilles;
 import com.example.distancevilles.utils.Utils;
 
@@ -19,6 +21,8 @@ public class ActivityJeu extends Activity {
     Button btn_answer1, btn_answer2;
     TextView view_nb_question, textview_question;
     TextView tx_score, tx_vies;
+
+    private JoueurService joueurDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,9 @@ public class ActivityJeu extends Activity {
         btn_answer2.setOnClickListener(v -> {
             launchActivityDisplayAnswer(btn_answer2);
         });
+
+        //recuperation des data bdd via la DAO
+        joueurDAO = JoueurService.getInstance(this);
 
         //On doit vérifier que l'on ne revient pas d'une ActivityDisplayAnswer
         Intent intent = getIntent();
@@ -71,6 +78,11 @@ public class ActivityJeu extends Activity {
             nb_vies--;
         }
 
+        Joueur joueur = new Joueur("pseudoTest", 20);
+
+        //Création du site dans la bdd
+        // joueur.setId(joueurDAO.create(joueur));
+
         Intent intent = new  Intent(getBaseContext(), ActivityDisplayAnswer.class);
         intent.putExtra("user_answer", user_answer);
         intent.putExtra("isCorrect", isCorrectAnswer);
@@ -85,7 +97,11 @@ public class ActivityJeu extends Activity {
     protected void onStart()
     {
         super.onStart();
+        run();
 
+    }
+
+    private void run() {
         if(nb_vies > 0) { // La partie continue
             String textview_score = "Score : " + nb_points;
             tx_score.setText(textview_score);
@@ -107,7 +123,6 @@ public class ActivityJeu extends Activity {
             Intent intent = new  Intent(getBaseContext(), ActivityPerdu.class);
             startActivity(intent);
         }
-
     }
 
     @Override

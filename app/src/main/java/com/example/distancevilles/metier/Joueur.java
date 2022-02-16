@@ -1,17 +1,28 @@
 package com.example.distancevilles.metier;
 
-import java.util.Date;
-
 public class Joueur {
 
+    private long id;
     private String pseudo;
-    private Date birthday;
-    private int points;
+    private int record;
 
-    public Joueur(String pseudo, Date birthday, int points) {
-        this.pseudo = pseudo;
-        this.birthday = birthday;
-        this.points = points;
+    public Joueur(long id, String pseudo, int points) {
+        setId(id);
+        setPseudo(pseudo);
+        setRecord(points);
+    }
+
+    public Joueur(String pseudo, int points) {
+        setPseudo(pseudo);
+        setRecord(points);
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getPseudo() {
@@ -22,19 +33,12 @@ public class Joueur {
         this.pseudo = pseudo;
     }
 
-    public Date getBirthday() {
-        return birthday;
+    public int getRecord() {
+        return record;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setRecord(int record) {
+        this.record = record;
     }
 
-    public int getPoints() {
-        return points;
-    }
-
-    public void setPoints(int points) {
-        this.points = points;
-    }
 }

@@ -4,22 +4,12 @@ import java.util.Date;
 
 public class Score {
 
-    private long id;
     private String date;
     private int score;
 
-    public Score(long id, String date, int score) {
-        this.id = id;
+    public Score(String date, int score) {
         this.date = date;
         this.score = score;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getDate() {
