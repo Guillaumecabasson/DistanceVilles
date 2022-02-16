@@ -28,11 +28,11 @@ public class ActivityDisplayAnswer extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_answer);
 
-        TextView tv_phrase = (TextView) findViewById(R.id.answer);
-        Button btn_back = (Button) findViewById(R.id.return_questions);
+        TextView tv_phrase = findViewById(R.id.answer);
+        Button btn_back = findViewById(R.id.return_questions);
 
-        TextView tv_distance1 = (TextView) findViewById(R.id.tv_distance1);
-        TextView tv_distance2 = (TextView) findViewById(R.id.tv_distance2);
+        TextView tv_distance1 = findViewById(R.id.tv_distance1);
+        TextView tv_distance2 = findViewById(R.id.tv_distance2);
 
         String text = "";
         Intent intent = getIntent();

@@ -11,7 +11,7 @@ import java.util.List;
 public class JoueurService implements ServiceDAO<Joueur> {
 
     private static JoueurService instance;
-    private SQLiteJoueurDao sqLiteCategoryDao;
+    private final SQLiteJoueurDao sqLiteCategoryDao;
 
     private JoueurService(Context context){
         sqLiteCategoryDao = SQLiteJoueurDao.getInstance(context);

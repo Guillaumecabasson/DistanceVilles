@@ -5,6 +5,7 @@
 
     <!--MENU ACCUEIL-->
     <string name="menu_play">JOUER</string>
+    <string name="menu_user">COMPTE</string>
     <string name="menu_quit">QUITTER</string>
 
     <!--STRING JEU-->

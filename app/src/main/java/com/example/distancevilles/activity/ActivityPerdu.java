@@ -17,13 +17,13 @@ public class ActivityPerdu extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perdu);
 
-        btn_backToMenu = (Button)(this.findViewById(R.id.btn_backToMenu));
+        btn_backToMenu = this.findViewById(R.id.btn_backToMenu);
         btn_backToMenu.setOnClickListener(v -> {
             Intent intent = new  Intent(getBaseContext(), ActivityMenu.class);
             startActivity(intent);
         });
 
-        saveScore();
+        //saveScore();
         
 //        Intent intent = getIntent();
 //        if (intent != null){

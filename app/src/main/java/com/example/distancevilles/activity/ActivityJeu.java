@@ -33,12 +33,12 @@ public class ActivityJeu extends Activity {
         this.questionActuelle = 0;
         this.nb_points = 0;
         this.nb_vies = 3;
-        btn_answer1 = (Button) (this.findViewById(R.id.btn_answer1));
-        btn_answer2 = (Button)(this.findViewById(R.id.btn_answer2));
-        view_nb_question = (TextView) (this.findViewById(R.id.view_nb_question));
-        textview_question = (TextView) (this.findViewById(R.id.question));
-        tx_score = (TextView) (this.findViewById(R.id.aff_score));
-        tx_vies = (TextView) (this.findViewById(R.id.aff_vies));
+        btn_answer1 = this.findViewById(R.id.btn_answer1);
+        btn_answer2 = this.findViewById(R.id.btn_answer2);
+        view_nb_question = this.findViewById(R.id.view_nb_question);
+        textview_question = this.findViewById(R.id.question);
+        tx_score = this.findViewById(R.id.aff_score);
+        tx_vies = this.findViewById(R.id.aff_vies);
 
         btn_answer1.setOnClickListener(v -> {
             launchActivityDisplayAnswer(btn_answer1);
