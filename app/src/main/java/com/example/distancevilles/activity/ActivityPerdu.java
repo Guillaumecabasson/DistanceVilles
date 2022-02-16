@@ -5,23 +5,27 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.distancevilles.R;
-import com.example.distancevilles.dao.JoueurService;
+import com.example.distancevilles.dao.DatabaseManager;
+import com.example.distancevilles.metier.Score;
+
+import java.util.List;
 
 public class ActivityPerdu extends Activity {
 
-    public static JoueurService joueurDAO;
+    private DatabaseManager databaseManager;
     Button btn_backToMenu;
     TextView tv_perdu;
+    TextView scoresView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perdu);
 
-        tv_perdu = this.findViewById(R.id.textview_perdu);
+        tv_perdu = (TextView) this.findViewById(R.id.textview_perdu);
+        scoresView = (TextView) this.findViewById(R.id.scoresView);
         btn_backToMenu = this.findViewById(R.id.btn_backToMenu);
         btn_backToMenu.setOnClickListener(v -> {
             Intent intent = new  Intent(getBaseContext(), ActivityMenu.class);
@@ -29,27 +33,20 @@ public class ActivityPerdu extends Activity {
             startActivity(intent);
         });
 
-//        Intent intent = getIntent();
-//        if (intent != null){
-//            if (intent.hasExtra("username")) {
-//                username = intent.getStringExtra("username");
-//            }
-//        }
-
         String txt_perdu = "Dommage " + ActivityMenu.joueur.getPseudo() + ", c'est perdu !";
         tv_perdu.setText(txt_perdu);
 
-        //recuperation des data bdd via la DAO
-        joueurDAO = JoueurService.getInstance(this);
+        databaseManager = new DatabaseManager(this);
 
-        saveScoreInBDD();
+        databaseManager.insertScore(ActivityMenu.joueur.getPseudo(), ActivityMenu.joueur.getScore());
 
-    }
+        List<Score> scores = databaseManager.readTop5();
+        for(Score score : scores){
+            scoresView.append(score.toString() + "\n\n");
+        }
 
-    private void saveScoreInBDD() {
-        //Création du site dans la bdd
-        Toast.makeText(this,"Score : "+ActivityMenu.joueur.getScore(),Toast.LENGTH_SHORT).show(); // ???
-        ActivityMenu.joueur.setId(joueurDAO.create(ActivityMenu.joueur));
+        databaseManager.close();
+
     }
 
 }
