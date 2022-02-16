@@ -12,7 +12,8 @@ import com.example.distancevilles.listener.ListenerBoutonQuitter;
 
 public class ActivityMenu extends Activity{
 
-    String user;
+    static String user;
+
     Button buttonJouer;
     Button buttonCompte;
     Button buttonQuitter;

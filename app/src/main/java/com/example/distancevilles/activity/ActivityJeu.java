@@ -121,6 +121,7 @@ public class ActivityJeu extends Activity {
         }
         else { // Le joueur a perdu
             Intent intent = new  Intent(getBaseContext(), ActivityPerdu.class);
+            intent.putExtra("username", ActivityMenu.user);
             startActivity(intent);
         }
     }
