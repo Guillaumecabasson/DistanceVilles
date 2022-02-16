@@ -1,5 +1,6 @@
 package com.example.distancevilles.metier;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Score {
@@ -49,6 +50,8 @@ public class Score {
     }
 
     public String toString(){
+        SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD HH:MM");
+        String date = sdf.format(new Date());
         return idScore + ": " + name + " -> " + score + " at " + when.toString();
     }
 }
