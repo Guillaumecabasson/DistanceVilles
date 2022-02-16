@@ -14,7 +14,7 @@ import java.util.List;
 
 public class DatabaseManager extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "DistancesVilles.db";
+    private static final String DATABASE_NAME = "DistanceVille.db";
     private static final int DATABASE_VERSION = 1;
 
     public DatabaseManager(Context context){
