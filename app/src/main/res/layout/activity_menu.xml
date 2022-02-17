@@ -47,7 +47,7 @@
             android:lines="1"
             android:text="@string/menu_play"
             android:textAlignment="center"
-            android:textSize="20sp" />
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/buttonCompte"
@@ -60,7 +60,7 @@
             android:lines="1"
             android:text="@string/menu_user"
             android:textAlignment="center"
-            android:textSize="20sp" />
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/buttonRecords"
@@ -73,7 +73,7 @@
             android:lines="1"
             android:text="@string/menu_records"
             android:textAlignment="center"
-            android:textSize="20sp" />
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/buttonQuitter"
@@ -86,7 +86,7 @@
             android:lines="1"
             android:text="@string/menu_quit"
             android:textAlignment="center"
-            android:textSize="20sp" />
+            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/textViewNom"
