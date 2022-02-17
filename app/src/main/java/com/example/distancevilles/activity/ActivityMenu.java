@@ -16,6 +16,7 @@ public class ActivityMenu extends Activity{
 
     Button buttonJouer;
     Button buttonCompte;
+    Button buttonRecords;
     Button buttonQuitter;
     TextView textViewNom;
 
@@ -25,18 +26,26 @@ public class ActivityMenu extends Activity{
 
         this.buttonJouer = this.findViewById(R.id.buttonJouer);
         this.buttonCompte = this.findViewById(R.id.buttonCompte);
+        this.buttonRecords = this.findViewById(R.id.buttonRecords);
         this.buttonQuitter = this.findViewById(R.id.buttonQuitter);
         this.textViewNom = this.findViewById(R.id.textViewNom);
 
         buttonJouer.setOnClickListener(v -> {
             Intent intent = new  Intent(getBaseContext(), ActivityJeu.class);
             startActivity(intent);
+            this.finish();
         });
-        buttonQuitter.setOnClickListener(new ListenerBoutonQuitter());
         buttonCompte.setOnClickListener(v -> {
             Intent intent = new  Intent(getBaseContext(), ActivityUser.class);
             startActivity(intent);
+            this.finish();
         });
+        buttonRecords.setOnClickListener(v -> {
+            Intent intent = new  Intent(getBaseContext(), ActivityRecords.class);
+            startActivity(intent);
+            this.finish();
+        });
+        buttonQuitter.setOnClickListener(new ListenerBoutonQuitter());
 
         String username = "Anonymous";
         Intent intent = getIntent();
@@ -53,4 +62,7 @@ public class ActivityMenu extends Activity{
         String helloUser = "Bonjour, " + joueur.getPseudo();
         textViewNom.setText(helloUser);
     }
+
+    @Override
+    public void onBackPressed() { } // "Neutralise" le bouton back propre au téléphone
 }

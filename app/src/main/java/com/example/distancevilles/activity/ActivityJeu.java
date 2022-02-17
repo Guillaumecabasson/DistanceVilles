@@ -81,6 +81,7 @@ public class ActivityJeu extends Activity {
         intent.putExtra("vies", nb_vies);
         intent.putExtra("question", questionVilles);
         startActivity(intent);
+        this.finish();
     }
 
     @Override
@@ -113,6 +114,7 @@ public class ActivityJeu extends Activity {
         else { // Le joueur a perdu
             Intent intent = new  Intent(getBaseContext(), ActivityPerdu.class);
             startActivity(intent);
+            this.finish();
         }
     }
 

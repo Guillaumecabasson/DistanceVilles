@@ -25,8 +25,11 @@ public class ActivityUser extends Activity {
             Intent intent = new  Intent(getBaseContext(), ActivityMenu.class);
             intent.putExtra("username", username_edit.getText().toString());
             startActivity(intent);
+            this.finish();
         });
 
     }
 
+    @Override
+    public void onBackPressed() { } // "Neutralise" le bouton back propre au téléphone
 }

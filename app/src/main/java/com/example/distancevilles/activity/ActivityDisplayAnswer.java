@@ -78,16 +78,14 @@ public class ActivityDisplayAnswer extends Activity {
         String aff_text2 = qVille.getVille().getNom() + " - " + qVille.getReponses()[1].getNom() + " : " + dist02 + " km";
         tv_distance1.setText(aff_text1);
         tv_distance2.setText(aff_text2);
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                actual_question++;
-                Intent intent = new  Intent(getBaseContext(), ActivityJeu.class);
-                intent.putExtra("actual_question", actual_question);
-                intent.putExtra("points", points);
-                intent.putExtra("vies", vies);
-                startActivity(intent);
-            }
+        btn_back.setOnClickListener(v -> {
+            actual_question++;
+            Intent intent2 = new  Intent(getBaseContext(), ActivityJeu.class);
+            intent2.putExtra("actual_question", actual_question);
+            intent2.putExtra("points", points);
+            intent2.putExtra("vies", vies);
+            startActivity(intent2);
+            this.finish();
         });
     }
 

@@ -4,9 +4,11 @@
     <string name="auteurs">CABASSON Guillaume</string>
 
     <!--MENU ACCUEIL-->
+    <string name="menu_name">ACCUEIL</string>
     <string name="menu_play">JOUER</string>
     <string name="menu_user">COMPTE</string>
     <string name="menu_quit">QUITTER</string>
+    <string name="menu_records">RECORDS</string>
 
     <!--STRING JEU-->
     <string name="btn_valider">VALIDER</string>

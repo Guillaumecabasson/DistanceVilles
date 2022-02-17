@@ -21,6 +21,7 @@
         </activity>
         <activity android:name=".activity.ActivityJeu" />
         <activity android:name=".activity.ActivityUser" />
+        <activity android:name=".activity.ActivityRecords" />
         <activity android:name=".activity.ActivityDisplayAnswer" />
         <activity android:name=".activity.ActivityPerdu" />
     </application>
