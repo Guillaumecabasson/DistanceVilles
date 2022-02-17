@@ -17,8 +17,8 @@ import java.util.List;
 
 public class DatabaseManager extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "DistanceVille.db";
-    private static final int DATABASE_VERSION = 1;
+    public static final String DATABASE_NAME = "DistanceVille.db";
+    public static final int DATABASE_VERSION = 1;
     // Noms de colonnes
     // /!\Si vous utilisez une base de données, les noms des colonnes ont les mêmes que ceux de votre base, de même pour les index.
     // My Column ID and the associated explanation for end-users
@@ -118,7 +118,12 @@ public class DatabaseManager extends SQLiteOpenHelper {
         Log.i("DATABASE", ""+contentValues.get(KEY_COL_DATE));
 
         // update the database
-        rowId = this.getWritableDatabase().update(DATABASE_NAME, contentValues, KEY_COL_ID + "=" + rowId, null);
+        try{
+            rowId = this.getWritableDatabase().update("DV_Scores", contentValues, KEY_COL_ID + " = " + rowId, null);
+        }
+        catch(Exception e){
+            Log.i("DATABASE", ""+e);
+        }
         // test to see if the insertion was ok
         if (rowId == -1) {
             Log.i("DATABASE", "UPDATE NON FONCTIONNEL");
