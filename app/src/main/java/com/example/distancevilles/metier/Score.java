@@ -1,5 +1,7 @@
 package com.example.distancevilles.metier;
 
+import android.util.Log;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -11,10 +13,10 @@ public class Score {
     private Date when;
 
     public Score(int idScore, String name, int score, Date when) {
-        this.idScore = idScore;
-        this.name = name;
-        this.score = score;
-        this.when = when;
+        setIdScore(idScore);
+        setName(name);
+        setScore(score);
+        setWhen(when);
     }
 
     public int getIdScore() {
@@ -50,8 +52,8 @@ public class Score {
     }
 
     public String toString(){
-        //SimpleDateFormat sdf = new SimpleDateFormat("YYYY-MM-DD HH:MM");
-        //String date = sdf.format(getWhen());
-        return getIdScore() + ": " + getName() + " -> " + getScore() + " at " + getWhen().toString();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy");
+        String date = simpleDateFormat.format(getWhen());
+        return getIdScore() + ": " + getName() + " -> " + getScore() + " at " + date;
     }
 }

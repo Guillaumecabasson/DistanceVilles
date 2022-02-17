@@ -48,6 +48,7 @@ public class ActivityMenu extends Activity{
 
         //joueur = new Joueur(username, 0); //idealement on le recupere de la bdd juste au-dessus
         joueur.setPseudo(username);
+        joueur.setScore(0);
 
         String helloUser = "Bonjour, " + joueur.getPseudo();
         textViewNom.setText(helloUser);

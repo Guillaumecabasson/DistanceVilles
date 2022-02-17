@@ -60,7 +60,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 null, null, null, null, "score desc", "5");
         cursor.moveToFirst();
         while(!cursor.isAfterLast()){
-            Score score = new Score(cursor.getInt(0), cursor.getString(1), cursor.getInt(2), new Date(cursor.getInt(3)));
+            Score score = new Score(cursor.getInt(0), cursor.getString(1), cursor.getInt(2), new Date(cursor.getLong(3)));
             scores.add(score);
             cursor.moveToNext();
         }
