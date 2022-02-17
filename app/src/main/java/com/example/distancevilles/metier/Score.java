@@ -10,13 +10,18 @@ public class Score {
     private int idScore;
     private String name;
     private int score;
-    private Date when;
+    private long when;
 
-    public Score(int idScore, String name, int score, Date when) {
+    public Score(int idScore, String name, int score, long when) {
         setIdScore(idScore);
         setName(name);
         setScore(score);
         setWhen(when);
+    }
+
+    public Score(String name, int score) {
+        setName(name);
+        setScore(score);
     }
 
     public int getIdScore() {
@@ -43,17 +48,17 @@ public class Score {
         this.score = score;
     }
 
-    public Date getWhen() {
+    public long getWhen() {
         return when;
     }
 
-    public void setWhen(Date when) {
+    public void setWhen(long when) {
         this.when = when;
     }
 
     public String toString(){
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd MMMM yyyy");
-        String date = simpleDateFormat.format(getWhen());
+        String date = simpleDateFormat.format(new Date(getWhen()));
         return getIdScore() + ": " + getName() + " -> " + getScore() + " at " + date;
     }
 }
