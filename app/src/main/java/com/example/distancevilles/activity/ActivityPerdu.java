@@ -7,9 +7,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.distancevilles.R;
+import com.example.distancevilles.dao.DatabaseManager;
 
 public class ActivityPerdu extends Activity {
 
+    private DatabaseManager databaseManager;
     Button btn_backToMenu;
     TextView tv_perdu;
 
@@ -30,6 +32,9 @@ public class ActivityPerdu extends Activity {
         String txt_perdu = "Dommage " + ActivityMenu.joueur.getPseudo() + ", c'est perdu !";
         tv_perdu.setText(txt_perdu);
 
+        databaseManager = new DatabaseManager(this);
+        databaseManager.insertScore(ActivityMenu.joueur.getPseudo(), ActivityMenu.joueur.getScore());
+        databaseManager.close();
     }
 
     @Override

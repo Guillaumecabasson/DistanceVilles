@@ -33,13 +33,10 @@ public class ActivityRecords extends Activity {
 
         databaseManager = new DatabaseManager(this);
 
-        databaseManager.insertScore(ActivityMenu.joueur.getPseudo(), ActivityMenu.joueur.getScore());
-
         List<Score> scores = databaseManager.readTop5();
         for(Score score : scores){
             scoresView.append(score.toString() + "\n\n");
         }
-
         databaseManager.close();
 
     }
