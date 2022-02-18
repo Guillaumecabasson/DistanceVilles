@@ -19,31 +19,17 @@ public class DatabaseManager extends SQLiteOpenHelper {
 
     public static final String DATABASE_NAME = "DistanceVille.db";
     public static final int DATABASE_VERSION = 1;
-    // Noms de colonnes
-    // /!\Si vous utilisez une base de données, les noms des colonnes ont les mêmes que ceux de votre base, de même pour les index.
+    // Noms de colonnes - les noms des colonnes ont les mêmes que ceux de votre base, de même pour les index.
     // My Column ID and the associated explanation for end-users
-    public static final String KEY_COL_ID = "idScore";// Mandatory
-
-    // My Column Name and the associated explanation for end-users
+    public static final String KEY_COL_ID = "idScore";
     public static final String KEY_COL_NAME = "name";
-
-    // My Column First Name and the associated explanation for end-users
     public static final String KEY_COL_SCORE = "score";
-
-    // My Column Eyes Color and the associated explanation for end-users
     public static final String KEY_COL_DATE = "when_";
 
     // Index des colonnes
-    // The index of the column ID
     public static final int ID_COLUMN = 1;
-
-    // The index of the column NAME
     public static final int NAME_COLUMN = 2;
-
-    // The index of the column FIRST NAME
     public static final int SCORE_COLUMN = 3;
-
-    // The index of the column EYES COLOR
     public static final int WHEN_COLUMN = 4;
 
 
@@ -107,8 +93,6 @@ public class DatabaseManager extends SQLiteOpenHelper {
             this.getWritableDatabase().execSQL(strSql);
             Log.i("DATABASE", "on insère une nouvelle ligne");
         }
-
-        //Log.i("DATABASE", "insertScore invoked");
     }
 
     private void updateRecord(ContentValues contentValues, long rowId) {
@@ -120,15 +104,15 @@ public class DatabaseManager extends SQLiteOpenHelper {
         // update the database
         try{
             rowId = this.getWritableDatabase().update("DV_Scores", contentValues, KEY_COL_ID + " = " + rowId, null);
+            // test to see if the insertion was ok
+            if (rowId == -1) {
+                Log.i("DATABASE", "UPDATE NON FONCTIONNEL");
+            } else {
+                Log.i("DATABASE", "SCORE ET DATE REMPLACES");
+            }
         }
         catch(Exception e){
-            Log.i("DATABASE", ""+e);
-        }
-        // test to see if the insertion was ok
-        if (rowId == -1) {
-            Log.i("DATABASE", "UPDATE NON FONCTIONNEL");
-        } else {
-            Log.i("DATABASE", "SCORE ET DATE REMPLACES");
+            Log.i("DATABASE EXCEPTION", ""+e);
         }
     }
 
