@@ -29,6 +29,7 @@ public class ActivityRecords extends Activity {
             Intent intent = new  Intent(getBaseContext(), ActivityMenu.class);
             //intent.putExtra("username", username);
             startActivity(intent);
+            this.finish();
         });
 
         databaseManager = new DatabaseManager(this);

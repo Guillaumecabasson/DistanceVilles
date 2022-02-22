@@ -89,7 +89,6 @@ public class ActivityJeu extends Activity {
     {
         super.onStart();
         run();
-
     }
 
     private void run() {
