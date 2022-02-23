@@ -7,11 +7,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.distancevilles.R;
-import com.example.distancevilles.dao.DatabaseManager;
+import com.example.distancevilles.dao.CategoryService;
+import com.example.distancevilles.dao.sqlite.DatabaseHelper;
 
 public class ActivityPerdu extends Activity {
 
-    private DatabaseManager databaseManager;
+    private DatabaseHelper databaseManager;
     Button btn_backToMenu;
     TextView tv_perdu;
 
@@ -32,9 +33,9 @@ public class ActivityPerdu extends Activity {
         String txt_perdu = "Dommage " + ActivityMenu.joueur.getPseudo() + ", c'est perdu !";
         tv_perdu.setText(txt_perdu);
 
-        databaseManager = new DatabaseManager(this);
-        databaseManager.insertScore(ActivityMenu.joueur.getPseudo(), ActivityMenu.joueur.getScore());
-        databaseManager.close();
+        CategoryService scoresDAO = CategoryService.getInstance(this);
+        scoresDAO.sqLiteCategoryDao.insertScore(ActivityMenu.joueur.getPseudo(), ActivityMenu.joueur.getScore());
+        scoresDAO.sqLiteCategoryDao.close();
     }
 
     @Override

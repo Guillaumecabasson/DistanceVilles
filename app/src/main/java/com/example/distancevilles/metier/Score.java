@@ -12,6 +12,10 @@ public class Score {
     private int score;
     private long when;
 
+    public Score(){
+
+    }
+
     public Score(int idScore, String name, int score, long when) {
         setIdScore(idScore);
         setName(name);
@@ -19,9 +23,10 @@ public class Score {
         setWhen(when);
     }
 
-    public Score(String name, int score) {
+    public Score(String name, int score, long when) {
         setName(name);
         setScore(score);
+        setWhen(when);
     }
 
     public int getIdScore() {
