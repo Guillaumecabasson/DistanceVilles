@@ -7,8 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.distancevilles.R;
-import com.example.distancevilles.dao.CategoryService;
-import com.example.distancevilles.dao.sqlite.DatabaseHelper;
+import com.example.distancevilles.dao.ScoresService;
 import com.example.distancevilles.metier.Score;
 
 import java.util.List;
@@ -33,14 +32,14 @@ public class ActivityRecords extends Activity {
         });
 
         // BUG
-        CategoryService scoresDAO = CategoryService.getInstance(this);
+        ScoresService scoresDAO = ScoresService.getInstance(this);
 
-        List<Score> scores = scoresDAO.sqLiteCategoryDao.readTop5();
+        List<Score> scores = scoresDAO.sqLiteScoresDao.readTop5();
         for(Score score : scores){
             scoresView.append(score.toString() + "\n\n");
         }
 
-        scoresDAO.sqLiteCategoryDao.close();
+        scoresDAO.sqLiteScoresDao.close();
 
     }
 

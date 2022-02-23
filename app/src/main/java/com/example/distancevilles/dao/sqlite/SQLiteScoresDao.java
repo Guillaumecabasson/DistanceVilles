@@ -14,21 +14,27 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-public class SQLiteCategoryDao extends SQLiteDao<Score> implements ServiceDAO<Score> {
+public class SQLiteScoresDao extends SQLiteDao<Score> implements ServiceDAO<Score> {
 
     @SuppressLint("StaticFieldLeak")
-    private static SQLiteCategoryDao instance;
+    private static SQLiteScoresDao instance;
+
+    // Index des colonnes // Utile ?
+    public static final int ID_COLUMN = 1;
+    public static final int NAME_COLUMN = 2;
+    public static final int SCORE_COLUMN = 3;
+    public static final int WHEN_COLUMN = 4;
 
     private static final String[] allColumns = { DatabaseHelper.KEY_COL_ID, DatabaseHelper.KEY_COL_NAME
             , DatabaseHelper.KEY_COL_SCORE, DatabaseHelper.KEY_COL_DATE};
 
-    public SQLiteCategoryDao(Context context) {
+    public SQLiteScoresDao(Context context) {
         super(context);
     }
 
-    public static SQLiteCategoryDao getInstance(Context context) {
+    public static SQLiteScoresDao getInstance(Context context) {
         if (instance == null)
-            instance = new SQLiteCategoryDao(context);
+            instance = new SQLiteScoresDao(context);
 
         return instance;
     }
@@ -160,10 +166,12 @@ public class SQLiteCategoryDao extends SQLiteDao<Score> implements ServiceDAO<Sc
             sqLiteDatabase.execSQL(strSql);
             Log.i("DATABASE", "on insère une nouvelle ligne");
         }
+
         close();
     }
 
     private void updateRecord(ContentValues contentValues, long rowId) {
+        // Pas besoin d'ouvrir la bdd car on le fait dans la fonction qui utilise cette fct, pour l'instant en tout cas
         Log.i("DATABASE", ""+contentValues.get(DatabaseHelper.KEY_COL_ID));
         Log.i("DATABASE", ""+contentValues.get(DatabaseHelper.KEY_COL_NAME));
         Log.i("DATABASE", ""+contentValues.get(DatabaseHelper.KEY_COL_SCORE));

@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.distancevilles.R;
-import com.example.distancevilles.dao.CategoryService;
 import com.example.distancevilles.listener.ListenerBoutonQuitter;
 import com.example.distancevilles.metier.Joueur;
 

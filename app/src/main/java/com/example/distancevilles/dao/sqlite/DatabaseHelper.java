@@ -1,17 +1,9 @@
 package com.example.distancevilles.dao.sqlite;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
-import com.example.distancevilles.metier.Score;
-
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -26,12 +18,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String KEY_COL_NAME = "name";
     public static final String KEY_COL_SCORE = "score";
     public static final String KEY_COL_DATE = "when_";
-
-    // Index des colonnes
-    public static final int ID_COLUMN = 1;
-    public static final int NAME_COLUMN = 2;
-    public static final int SCORE_COLUMN = 3;
-    public static final int WHEN_COLUMN = 4;
 
     private static final String DATABASE_CREATE_SCORES = "CREATE TABLE "
             + TABLE_SCORES
