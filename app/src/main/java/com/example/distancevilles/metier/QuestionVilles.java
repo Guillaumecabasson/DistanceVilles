@@ -2,7 +2,6 @@ package com.example.distancevilles.metier;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.Toast;
 
 public class QuestionVilles implements Parcelable {
 

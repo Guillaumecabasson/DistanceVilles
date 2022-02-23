@@ -67,7 +67,7 @@ public class ActivityJeu extends Activity {
         if(questionVilles.getReponses()[questionVilles.getInd_reponse()].getNom().equals(user_answer)){
             isCorrectAnswer = true;
             nb_points++;
-            ActivityMenu.joueur.setScore(ActivityMenu.joueur.getScore()+1);
+            ActivityMenu.joueur.setBest_score(ActivityMenu.joueur.getBest_score()+1);
         }
         else{
             nb_vies--;

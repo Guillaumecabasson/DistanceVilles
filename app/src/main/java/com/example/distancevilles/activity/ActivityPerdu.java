@@ -30,12 +30,11 @@ public class ActivityPerdu extends Activity {
             this.finish();
         });
 
-        String txt_perdu = "Dommage " + ActivityMenu.joueur.getPseudo() + ", c'est perdu !";
+        String txt_perdu = "Dommage " + ActivityMenu.joueur.getName() + ", c'est perdu !";
         tv_perdu.setText(txt_perdu);
 
         ScoresService scoresDAO = ScoresService.getInstance(this);
-        scoresDAO.sqLiteScoresDao.insertScore(ActivityMenu.joueur.getPseudo(), ActivityMenu.joueur.getScore());
-        scoresDAO.sqLiteScoresDao.close();
+        scoresDAO.insertScore(ActivityMenu.joueur.getName(), ActivityMenu.joueur.getBest_score());
     }
 
     @Override

@@ -14,17 +14,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Noms de colonnes - les noms des colonnes ont les mêmes que ceux de votre base, de même pour les index.
     public static final String TABLE_SCORES = "DV_SCORES";
-    public static final String KEY_COL_ID = "idScore";
-    public static final String KEY_COL_NAME = "name";
-    public static final String KEY_COL_SCORE = "score";
-    public static final String KEY_COL_DATE = "when_";
+    public static final String KEY_SCORES_COL_ID = "idScore";
+    public static final String KEY_SCORES_COL_NAME = "name";
+    public static final String KEY_SCORES_COL_SCORE = "score";
+    public static final String KEY_SCORES_COL_DATE = "when_";
+
+    public static final String TABLE_PLAYERS = "DV_PLAYERS";
+    public static final String KEY_PLAYERS_COL_ID = "idPlayer";
+    public static final String KEY_PLAYERS_COL_NAME = "name";
+    public static final String KEY_PLAYERS_COL_NBGAMES = "nbGames";
+    public static final String KEY_PLAYERS_COL_BEST_SCORE = "bestScore";
+    public static final String KEY_PLAYERS_COL_REGISTR_DATE = "registration";
 
     private static final String DATABASE_CREATE_SCORES = "CREATE TABLE "
             + TABLE_SCORES
-            + "(" + KEY_COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + KEY_COL_NAME + " TEXT NOT NULL,"
-            + KEY_COL_SCORE + " INTEGER NOT NULL,"
-            + KEY_COL_DATE + " INTEGER NOT NULL"
+            + "(" + KEY_SCORES_COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + KEY_SCORES_COL_NAME + " TEXT NOT NULL,"
+            + KEY_SCORES_COL_SCORE + " INTEGER NOT NULL,"
+            + KEY_SCORES_COL_DATE + " INTEGER NOT NULL"
+            + ");";
+
+    private static final String DATABASE_CREATE_PLAYERS = "CREATE TABLE "
+            + TABLE_PLAYERS
+            + "(" + KEY_PLAYERS_COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + KEY_PLAYERS_COL_NAME + " TEXT NOT NULL,"
+            + KEY_PLAYERS_COL_NBGAMES + " INTEGER NOT NULL,"
+            + KEY_PLAYERS_COL_BEST_SCORE + " INTEGER NOT NULL,"
+            + KEY_PLAYERS_COL_REGISTR_DATE + " INTEGER NOT NULL"
             + ");";
 
     public DatabaseHelper(Context context){
@@ -41,6 +57,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(DATABASE_CREATE_SCORES);
+        db.execSQL(DATABASE_CREATE_PLAYERS);
         Log.i("DATABASE", "onCreate invoked");
     }
 
@@ -51,7 +68,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         + newVersion + ", détruisant les anciennes données");
 
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_SCORES);
-
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_PLAYERS);
         onCreate(db);
     }
 

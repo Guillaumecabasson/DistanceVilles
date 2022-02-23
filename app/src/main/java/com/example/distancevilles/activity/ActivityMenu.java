@@ -12,7 +12,7 @@ import com.example.distancevilles.metier.Joueur;
 
 public class ActivityMenu extends Activity{
 
-    public static Joueur joueur = new Joueur("", 0);
+    public static Joueur joueur = new Joueur("", 0, 0, 0);
 
     Button buttonJouer;
     Button buttonCompte;
@@ -56,10 +56,10 @@ public class ActivityMenu extends Activity{
         }
 
         //joueur = new Joueur(username, 0); //idealement on le recupere de la bdd juste au-dessus
-        joueur.setPseudo(username);
-        joueur.setScore(0);
+        joueur.setName(username);
+        joueur.setBest_score(0);
 
-        String helloUser = "Bonjour, " + joueur.getPseudo();
+        String helloUser = "Bonjour, " + joueur.getName();
         textViewNom.setText(helloUser);
     }
 

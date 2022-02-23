@@ -25,8 +25,8 @@ public class SQLiteScoresDao extends SQLiteDao<Score> implements ServiceDAO<Scor
     public static final int SCORE_COLUMN = 3;
     public static final int WHEN_COLUMN = 4;
 
-    private static final String[] allColumns = { DatabaseHelper.KEY_COL_ID, DatabaseHelper.KEY_COL_NAME
-            , DatabaseHelper.KEY_COL_SCORE, DatabaseHelper.KEY_COL_DATE};
+    private static final String[] allColumns = { DatabaseHelper.KEY_SCORES_COL_ID, DatabaseHelper.KEY_SCORES_COL_NAME
+            , DatabaseHelper.KEY_SCORES_COL_SCORE, DatabaseHelper.KEY_SCORES_COL_DATE};
 
     public SQLiteScoresDao(Context context) {
         super(context);
@@ -55,7 +55,7 @@ public class SQLiteScoresDao extends SQLiteDao<Score> implements ServiceDAO<Scor
         openWritable();
 
         ContentValues values = putContentValues(score);
-        int returnedId = sqLiteDatabase.update(DatabaseHelper.TABLE_SCORES, values, DatabaseHelper.KEY_COL_ID + " = ?",
+        int returnedId = sqLiteDatabase.update(DatabaseHelper.TABLE_SCORES, values, DatabaseHelper.KEY_SCORES_COL_ID + " = ?",
                 new String[] { String.valueOf(score.getIdScore()) });
 
         close();
@@ -66,7 +66,7 @@ public class SQLiteScoresDao extends SQLiteDao<Score> implements ServiceDAO<Scor
     public int delete(long id) {
         openWritable();
 
-        int returnedId = sqLiteDatabase.delete(DatabaseHelper.TABLE_SCORES, DatabaseHelper.KEY_COL_ID + " = ?",
+        int returnedId = sqLiteDatabase.delete(DatabaseHelper.TABLE_SCORES, DatabaseHelper.KEY_SCORES_COL_ID + " = ?",
                 new String[] { String.valueOf(id) });
 
         close();
@@ -77,7 +77,7 @@ public class SQLiteScoresDao extends SQLiteDao<Score> implements ServiceDAO<Scor
     public Score findById(long id) {
         openReadable();
 
-        Cursor cursor = sqLiteDatabase.query(DatabaseHelper.TABLE_SCORES, allColumns, DatabaseHelper.KEY_COL_ID + " = ?",
+        Cursor cursor = sqLiteDatabase.query(DatabaseHelper.TABLE_SCORES, allColumns, DatabaseHelper.KEY_SCORES_COL_ID + " = ?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
 
         cursor.moveToFirst();
@@ -123,9 +123,9 @@ public class SQLiteScoresDao extends SQLiteDao<Score> implements ServiceDAO<Scor
 
     private ContentValues putContentValues(Score score) {
         ContentValues values = new ContentValues();
-        values.put(DatabaseHelper.KEY_COL_NAME, score.getScore());
-        values.put(DatabaseHelper.KEY_COL_SCORE, score.getName());
-        values.put(DatabaseHelper.KEY_COL_DATE, score.getWhen());
+        values.put(DatabaseHelper.KEY_SCORES_COL_NAME, score.getScore());
+        values.put(DatabaseHelper.KEY_SCORES_COL_SCORE, score.getName());
+        values.put(DatabaseHelper.KEY_SCORES_COL_DATE, score.getWhen());
         return values;
     }
 
@@ -152,10 +152,10 @@ public class SQLiteScoresDao extends SQLiteDao<Score> implements ServiceDAO<Scor
             Log.i("DATABASE", "JOUEUR TROUVE : ");
             if(score > score_recup.getScore()) {
                 ContentValues content = new ContentValues();
-                content.put(DatabaseHelper.KEY_COL_ID, score_recup.getIdScore());
-                content.put(DatabaseHelper.KEY_COL_NAME, score_recup.getName());
-                content.put(DatabaseHelper.KEY_COL_SCORE, score);
-                content.put(DatabaseHelper.KEY_COL_DATE, new Date().getTime());
+                content.put(DatabaseHelper.KEY_SCORES_COL_ID, score_recup.getIdScore());
+                content.put(DatabaseHelper.KEY_SCORES_COL_NAME, score_recup.getName());
+                content.put(DatabaseHelper.KEY_SCORES_COL_SCORE, score);
+                content.put(DatabaseHelper.KEY_SCORES_COL_DATE, new Date().getTime());
                 updateRecord(content, score_recup.getIdScore());
             }
         }
@@ -172,14 +172,14 @@ public class SQLiteScoresDao extends SQLiteDao<Score> implements ServiceDAO<Scor
 
     private void updateRecord(ContentValues contentValues, long rowId) {
         // Pas besoin d'ouvrir la bdd car on le fait dans la fonction qui utilise cette fct, pour l'instant en tout cas
-        Log.i("DATABASE", ""+contentValues.get(DatabaseHelper.KEY_COL_ID));
-        Log.i("DATABASE", ""+contentValues.get(DatabaseHelper.KEY_COL_NAME));
-        Log.i("DATABASE", ""+contentValues.get(DatabaseHelper.KEY_COL_SCORE));
-        Log.i("DATABASE", ""+contentValues.get(DatabaseHelper.KEY_COL_DATE));
+        Log.i("DATABASE", ""+contentValues.get(DatabaseHelper.KEY_SCORES_COL_ID));
+        Log.i("DATABASE", ""+contentValues.get(DatabaseHelper.KEY_SCORES_COL_NAME));
+        Log.i("DATABASE", ""+contentValues.get(DatabaseHelper.KEY_SCORES_COL_SCORE));
+        Log.i("DATABASE", ""+contentValues.get(DatabaseHelper.KEY_SCORES_COL_DATE));
 
         // update the database
         try{
-            rowId = sqLiteDatabase.update(DatabaseHelper.TABLE_SCORES, contentValues, DatabaseHelper.KEY_COL_ID + " = " + rowId, null);
+            rowId = sqLiteDatabase.update(DatabaseHelper.TABLE_SCORES, contentValues, DatabaseHelper.KEY_SCORES_COL_ID + " = " + rowId, null);
             // test to see if the insertion was ok
             if (rowId == -1) {
                 Log.i("DATABASE", "UPDATE NON FONCTIONNEL");

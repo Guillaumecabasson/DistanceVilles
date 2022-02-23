@@ -1,7 +1,5 @@
 package com.example.distancevilles.metier;
 
-import android.util.Log;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
