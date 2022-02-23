@@ -52,4 +52,12 @@ public class ScoresService implements ServiceDAO<Score> {
     public Cursor getWithCursor(long id) {
         return sqLiteScoresDao.getWithCursor(id);
     }
+
+    public Score cursorToObject(Cursor cursor) { return sqLiteScoresDao.cursorToObject((cursor)); }
+
+    public void insertScore(String name, int score){
+        sqLiteScoresDao.insertScore(name, score);
+    }
+
+    public List<Score> readTop5() { return sqLiteScoresDao.readTop5();}
 }

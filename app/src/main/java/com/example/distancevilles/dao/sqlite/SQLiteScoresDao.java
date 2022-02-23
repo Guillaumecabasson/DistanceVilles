@@ -58,6 +58,7 @@ public class SQLiteScoresDao extends SQLiteDao<Score> implements ServiceDAO<Scor
         int returnedId = sqLiteDatabase.update(DatabaseHelper.TABLE_SCORES, values, DatabaseHelper.KEY_COL_ID + " = ?",
                 new String[] { String.valueOf(score.getIdScore()) });
 
+        close();
         return returnedId;
     }
 
@@ -106,7 +107,6 @@ public class SQLiteScoresDao extends SQLiteDao<Score> implements ServiceDAO<Scor
         }
         cursor.close();
         close();
-
         return scores;
     }
 

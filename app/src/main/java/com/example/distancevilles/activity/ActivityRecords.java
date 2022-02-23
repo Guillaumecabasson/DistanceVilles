@@ -34,12 +34,10 @@ public class ActivityRecords extends Activity {
         // BUG
         ScoresService scoresDAO = ScoresService.getInstance(this);
 
-        List<Score> scores = scoresDAO.sqLiteScoresDao.readTop5();
+        List<Score> scores = scoresDAO.readTop5();
         for(Score score : scores){
             scoresView.append(score.toString() + "\n\n");
         }
-
-        scoresDAO.sqLiteScoresDao.close();
 
     }
 
