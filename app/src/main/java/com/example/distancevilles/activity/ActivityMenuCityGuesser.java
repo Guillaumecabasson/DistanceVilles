@@ -26,37 +26,44 @@ public class ActivityMenuCityGuesser extends Activity {
         this.buttonQuitter = this.findViewById(R.id.buttonQuitter);
 
         buttonJouer.setOnClickListener(v -> {
-            // Create the object of AlertDialog Builder class
-            AlertDialog.Builder builder = new AlertDialog.Builder(ActivityMenuCityGuesser.this);
-            builder.setMessage("En lançant une partie sans vous être connecté(e) auparavant, votre score ne sera pas enregistré ! " +
-                    "Souhaitez-vous lancer la partie ?");
-            builder.setTitle("Alert !");
+            if(ActivityHome.joueur.getName().equals("Anonymous")) {
+                // Create the object of AlertDialog Builder class
+                AlertDialog.Builder builder = new AlertDialog.Builder(ActivityMenuCityGuesser.this);
+                builder.setMessage("En lançant une partie sans vous être connecté(e) auparavant, votre score ne sera pas enregistré ! " +
+                        "Souhaitez-vous lancer la partie ?");
+                builder.setTitle("Alert !");
 
-            // Set Cancelable false for when the user clicks on the outside the Dialog Box then it will remain show
-            builder.setCancelable(false);
+                // Set Cancelable false for when the user clicks on the outside the Dialog Box then it will remain show
+                builder.setCancelable(false);
 
-            // Set the positive button with yes name OnClickListener method is use of DialogInterface interface.
-            builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    Intent intent = new  Intent(getBaseContext(), ActivityJeu.class);
-                    startActivity(intent);
-                    finish();
-                }
-            });
+                // Set the positive button with yes name OnClickListener method is use of DialogInterface interface.
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(getBaseContext(), ActivityJeu.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
 
-            // Set the Negative button with No name OnClickListener method is use of DialogInterface interface.
-            builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // If user click no then dialog box is canceled.
-                    dialog.cancel();
-                }
-            });
+                // Set the Negative button with No name OnClickListener method is use of DialogInterface interface.
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // If user click no then dialog box is canceled.
+                        dialog.cancel();
+                    }
+                });
 
-            // Create the Alert dialog and show it
-            AlertDialog alertDialog = builder.create();
-            alertDialog.show();
+                // Create the Alert dialog and show it
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+            else {
+                Intent intent = new Intent(getBaseContext(), ActivityJeu.class);
+                startActivity(intent);
+                this.finish();
+            }
         });
         buttonOptions.setOnClickListener(v -> {
 
