@@ -19,7 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ActivityMenu" />
+        <activity android:name=".activity.ActivityMenuCityGuesser" />
         <activity android:name=".activity.ActivityJeu" />
         <activity android:name=".activity.ActivityUser" />
         <activity android:name=".activity.ActivityRecords" />

@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.distancevilles.activity.ActivityMenu;
+import com.example.distancevilles.activity.ActivityMenuCityGuesser;
 
 public class ListenerBoutonAccueil implements Button.OnClickListener {
     Activity activity;
@@ -16,7 +16,7 @@ public class ListenerBoutonAccueil implements Button.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        Intent switchActivityIntent = new Intent(this.activity, ActivityMenu.class);
+        Intent switchActivityIntent = new Intent(this.activity, ActivityMenuCityGuesser.class);
         this.activity.startActivityForResult(switchActivityIntent, 2);
         this.activity.finish();
     }

@@ -50,19 +50,6 @@
             android:textSize="30sp" />
 
         <Button
-            android:id="@+id/buttonCompte"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/blue"
-            android:textColor="@color/white"
-            android:gravity="center|center_horizontal|center_vertical"
-            android:lines="1"
-            android:text="@string/menu_user"
-            android:textAlignment="center"
-            android:textSize="30sp" />
-
-        <Button
             android:id="@+id/buttonRecords"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,6 +59,19 @@
             android:gravity="center|center_horizontal|center_vertical"
             android:lines="1"
             android:text="@string/menu_records"
+            android:textAlignment="center"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/buttonSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/blue"
+            android:textColor="@color/white"
+            android:gravity="center|center_horizontal|center_vertical"
+            android:lines="1"
+            android:text="@string/menu_settings"
             android:textAlignment="center"
             android:textSize="30sp" />
 
@@ -87,18 +87,6 @@
             android:text="@string/menu_gohome"
             android:textAlignment="center"
             android:textSize="30sp" />
-
-        <TextView
-            android:id="@+id/textViewNom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center|end"
-            android:text="Bonjour"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="24sp"
-            android:visibility="visible" />
 
     </LinearLayout>
 

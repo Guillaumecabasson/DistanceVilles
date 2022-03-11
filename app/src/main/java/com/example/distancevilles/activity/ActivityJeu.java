@@ -67,7 +67,6 @@ public class ActivityJeu extends Activity {
         if(questionVilles.getReponses()[questionVilles.getInd_reponse()].getNom().equals(user_answer)){
             isCorrectAnswer = true;
             nb_points++;
-            ActivityMenu.joueur.setBest_score(ActivityMenu.joueur.getBest_score()+1);
         }
         else{
             nb_vies--;
@@ -112,6 +111,7 @@ public class ActivityJeu extends Activity {
         }
         else { // Le joueur a perdu
             Intent intent = new  Intent(getBaseContext(), ActivityPerdu.class);
+            intent.putExtra("score", nb_points);
             startActivity(intent);
             this.finish();
         }

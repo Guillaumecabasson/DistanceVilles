@@ -25,20 +25,18 @@ public class ActivityHome extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        this.buttonJouer = this.findViewById(R.id.buttonJouer);
+        this.buttonJouer = this.findViewById(R.id.buttonJouerCityGuesser);
         this.buttonCompte = this.findViewById(R.id.buttonCompte);
         this.buttonQuitter = this.findViewById(R.id.buttonQuitter);
         this.textViewNom = this.findViewById(R.id.textViewNom);
 
         buttonJouer.setOnClickListener(v -> {
-            Intent intent = new  Intent(getBaseContext(), ActivityJeu.class);
+            Intent intent = new  Intent(getBaseContext(), ActivityMenuCityGuesser.class);
             startActivity(intent);
-            this.finish();
         });
         buttonCompte.setOnClickListener(v -> {
             Intent intent = new  Intent(getBaseContext(), ActivityUser.class);
             startActivity(intent);
-            this.finish();
         });
         buttonQuitter.setOnClickListener(new ListenerBoutonQuitter());
 
@@ -50,11 +48,7 @@ public class ActivityHome extends Activity{
             }
         }
 
-        //joueur = new Joueur(username, 0); //idealement on le recupere de la bdd juste au-dessus
-        joueur.setName(username);
-        joueur.setBest_score(0);
-
-        String helloUser = "Bonjour, " + joueur.getName();
+        String helloUser = "Bonjour, " + ActivityHome.joueur.getName();
         textViewNom.setText(helloUser);
     }
 

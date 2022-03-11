@@ -3,7 +3,6 @@ package com.example.distancevilles.metier;
 public class Joueur {
 
     private long id;
-
     private String name;
     private String password;
     private int birth_year;

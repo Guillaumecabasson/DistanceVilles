@@ -37,7 +37,7 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/buttonJouer"
+            android:id="@+id/buttonJouerCityGuesser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -45,7 +45,7 @@
             android:textColor="@color/white"
             android:gravity="center|center_horizontal|center_vertical"
             android:lines="1"
-            android:text="@string/menu_play"
+            android:text="@string/menu_play_city_guesser"
             android:textAlignment="center"
             android:textSize="30sp" />
 

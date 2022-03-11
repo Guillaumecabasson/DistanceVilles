@@ -53,8 +53,9 @@ public class ActivityUser extends Activity {
         btn_creation = (Button) findViewById(R.id.btn_creation);
 
         btn_seConnecter.setOnClickListener(v -> {
-            Intent intent = new  Intent(getBaseContext(), ActivityMenu.class);
-            intent.putExtra("username", username_connection.getText().toString());
+            // Recherche du joueur correspondant dans la BDD s'il existe
+            // ActivityHome.joueur =
+            Intent intent = new  Intent(getBaseContext(), ActivityHome.class);
             startActivity(intent);
             this.finish();
         });
@@ -69,6 +70,13 @@ public class ActivityUser extends Activity {
                     Integer.parseInt(birthyear_creation.getText().toString()), new Date().getTime(),
                     pays_creation.getSelectedItem().toString(), 0,0);
             playersDAO.insertPlayer(joueur);
+
+            // Si ça réussit
+            ActivityHome.joueur = joueur;
+
+            Intent intent = new  Intent(getBaseContext(), ActivityHome.class);
+            startActivity(intent);
+            this.finish();
         });
 
     }

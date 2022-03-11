@@ -7,7 +7,9 @@
     <!--MENU ACCUEIL-->
     <string name="menu_name">ACCUEIL</string>
     <string name="menu_play">JOUER</string>
-    <string name="menu_user">COMPTE</string>
+    <string name="menu_play_city_guesser">CITY GUESSER</string>
+    <string name="menu_user">SE CONNECTER</string>
+    <string name="menu_settings">OPTIONS</string>
     <string name="menu_quit">QUITTER</string>
     <string name="menu_gohome">RETOUR AU MENU</string>
     <string name="menu_records">RECORDS</string>

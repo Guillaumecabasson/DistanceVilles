@@ -6,70 +6,51 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.example.distancevilles.R;
-import com.example.distancevilles.listener.ListenerBoutonQuitter;
-import com.example.distancevilles.metier.Joueur;
 
-public class ActivityMenu extends Activity{
-
-    public static Joueur joueur = new Joueur("Anonymous", "", 2000, 0, "", 0 , 0);
+public class ActivityMenuCityGuesser extends Activity{
 
     Button buttonJouer;
-    Button buttonCompte;
+    Button buttonOptions;
     Button buttonRecords;
     Button buttonQuitter;
-    TextView textViewNom;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
         this.buttonJouer = this.findViewById(R.id.buttonJouer);
-        this.buttonCompte = this.findViewById(R.id.buttonCompte);
+        this.buttonOptions = this.findViewById(R.id.buttonSettings);
         this.buttonRecords = this.findViewById(R.id.buttonRecords);
         this.buttonQuitter = this.findViewById(R.id.buttonQuitter);
-        this.textViewNom = this.findViewById(R.id.textViewNom);
 
         buttonJouer.setOnClickListener(v -> {
             Intent intent = new  Intent(getBaseContext(), ActivityJeu.class);
             startActivity(intent);
             this.finish();
         });
-        buttonCompte.setOnClickListener(v -> {
-            Intent intent = new  Intent(getBaseContext(), ActivityUser.class);
-            startActivity(intent);
-            this.finish();
+        buttonOptions.setOnClickListener(v -> {
+
         });
         buttonRecords.setOnClickListener(v -> {
             Intent intent = new  Intent(getBaseContext(), ActivityRecords.class);
             startActivity(intent);
             this.finish();
         });
-        buttonQuitter.setOnClickListener(new ListenerBoutonQuitter());
+        buttonQuitter.setOnClickListener(v -> {
+            Intent intent = new  Intent(getBaseContext(), ActivityHome.class);
+            startActivity(intent);
+            this.finish();
+        });
 
-        String username = "Anonymous";
-        Intent intent = getIntent();
-        if (intent != null){
-            if (intent.hasExtra("username")){ // depuis ActivityUser ou ActivityPerdu
-                username = intent.getStringExtra("username");
-            }
-        }
-
-        //joueur = new Joueur(username, 0); //idealement on le recupere de la bdd juste au-dessus
-        joueur.setName(username);
-        joueur.setBest_score(0);
-
-        String helloUser = "Bonjour, " + joueur.getName();
-        textViewNom.setText(helloUser);
     }
 
     @Override
     public void onBackPressed()
     {
         // Create the object of AlertDialog Builder class
-        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityMenu.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityMenuCityGuesser.this);
 
         builder.setMessage("Do you want to exit ?");
         builder.setTitle("Alert !");

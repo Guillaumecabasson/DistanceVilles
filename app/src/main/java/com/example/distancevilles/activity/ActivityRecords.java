@@ -25,7 +25,7 @@ public class ActivityRecords extends Activity {
         scoresView = (TextView) this.findViewById(R.id.scoresView);
         btn_backToMenu2 = (Button) this.findViewById(R.id.btn_backToMenu2);
         btn_backToMenu2.setOnClickListener(v -> {
-            Intent intent = new  Intent(getBaseContext(), ActivityMenu.class);
+            Intent intent = new  Intent(getBaseContext(), ActivityMenuCityGuesser.class);
             //intent.putExtra("username", username);
             startActivity(intent);
             this.finish();
