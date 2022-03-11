@@ -12,4 +12,15 @@
 
     <!--STRING JEU-->
     <string name="btn_valider">VALIDER</string>
+
+    <string-array name="country_array">
+        <item>Allemagne</item>
+        <item>Angleterre</item>
+        <item>Belgique</item>
+        <item>Etats-Unis</item>
+        <item>France</item>
+        <item>Japon</item>
+        <item>Suisse</item>
+        <item>Ukraine</item>
+    </string-array>
 </resources>
