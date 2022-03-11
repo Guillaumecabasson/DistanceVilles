@@ -3,14 +3,11 @@ package com.example.distancevilles.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.distancevilles.R;
-import com.example.distancevilles.metier.Joueur;
 import com.example.distancevilles.metier.QuestionVilles;
 
 import java.text.DecimalFormat;

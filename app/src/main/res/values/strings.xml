@@ -19,13 +19,32 @@
 
     <string-array name="country_array">
         <item>Allemagne</item>
-        <item>Angleterre</item>
+        <item>Autriche</item>
         <item>Belgique</item>
+        <item>Bulgarie</item>
+        <item>Chypre</item>
+        <item>Croatie</item>
+        <item>Danemark</item>
         <item>Espagne</item>
+        <item>Estonie</item>
         <item>Etats-Unis</item>
+        <item>Finlande</item>
         <item>France</item>
-        <item>Japon</item>
-        <item>Suisse</item>
-        <item>Ukraine</item>
+        <item>Grèce</item>
+        <item>Hongrie</item>
+        <item>Irlande</item>
+        <item>Italie</item>
+        <item>Lettonie</item>
+        <item>Lituanie</item>
+        <item>Luxembourg</item>
+        <item>Malte</item>
+        <item>Pays-Bas</item>
+        <item>Pologne</item>
+        <item>Portugal</item>
+        <item>République Tchèque</item>
+        <item>Roumanie</item>
+        <item>Slovaquie</item>
+        <item>Slovénie</item>
+        <item>Suède</item>
     </string-array>
 </resources>
