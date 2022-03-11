@@ -9,12 +9,11 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.distancevilles.R;
-import com.example.distancevilles.listener.ListenerBoutonQuitter;
 import com.example.distancevilles.metier.Joueur;
 
 public class ActivityHome extends Activity{
 
-    public static Joueur joueur = new Joueur("Anonymous", "", 2000, 0, "", 0 , 0);
+    public static Joueur joueur = new Joueur("Anonymous", "", 1900, 0, "", 0 , 0);
 
     Button buttonJouer;
     Button buttonCompte;
@@ -33,12 +32,15 @@ public class ActivityHome extends Activity{
         buttonJouer.setOnClickListener(v -> {
             Intent intent = new  Intent(getBaseContext(), ActivityMenuCityGuesser.class);
             startActivity(intent);
+            this.finish();
         });
         buttonCompte.setOnClickListener(v -> {
             Intent intent = new  Intent(getBaseContext(), ActivityUser.class);
             startActivity(intent);
         });
-        buttonQuitter.setOnClickListener(new ListenerBoutonQuitter());
+        buttonQuitter.setOnClickListener(v -> {
+            System.exit(0);
+        });
 
         String username = "Anonymous";
         Intent intent = getIntent();

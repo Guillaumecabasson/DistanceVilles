@@ -40,8 +40,10 @@ public class ActivityPerdu extends Activity {
         String txt_perdu = "Dommage " + ActivityHome.joueur.getName() + ", c'est perdu !";
         tv_perdu.setText(txt_perdu);
 
-        scoresDAO = ScoresService.getInstance(this);
-        scoresDAO.insertScore(ActivityHome.joueur.getName(), score_final);
+        if(!ActivityHome.joueur.getName().equals("Anonymous")){
+            scoresDAO = ScoresService.getInstance(this);
+            scoresDAO.insertScore(ActivityHome.joueur.getName(), score_final);
+        }
     }
 
     @Override
