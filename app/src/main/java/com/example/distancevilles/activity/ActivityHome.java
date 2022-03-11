@@ -30,9 +30,44 @@ public class ActivityHome extends Activity{
         this.textViewNom = this.findViewById(R.id.textViewNom);
 
         buttonJouer.setOnClickListener(v -> {
-            Intent intent = new  Intent(getBaseContext(), ActivityMenuCityGuesser.class);
-            startActivity(intent);
-            this.finish();
+            if(ActivityHome.joueur.getName().equals("Anonymous")) {
+                // Create the object of AlertDialog Builder class
+                AlertDialog.Builder builder = new AlertDialog.Builder(ActivityHome.this);
+                builder.setMessage("En lançant une partie sans vous être connecté(e) auparavant, votre score ne pourra pas être enregistré ! " +
+                        "Souhaitez-vous quand même continuer ?");
+                builder.setTitle("Attention !");
+
+                // Set Cancelable false for when the user clicks on the outside the Dialog Box then it will remain show
+                builder.setCancelable(false);
+
+                // Set the positive button with yes name OnClickListener method is use of DialogInterface interface.
+                builder.setPositiveButton("Continuer", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(getBaseContext(), ActivityMenuCityGuesser.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
+                // Set the Negative button with No name OnClickListener method is use of DialogInterface interface.
+                builder.setNegativeButton("J'ai oublié de m'identifier", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // If user click no then dialog box is canceled.
+                        dialog.cancel();
+                    }
+                });
+
+                // Create the Alert dialog and show it
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+            else {
+                Intent intent = new Intent(getBaseContext(), ActivityMenuCityGuesser.class);
+                startActivity(intent);
+                this.finish();
+            }
         });
         buttonCompte.setOnClickListener(v -> {
             Intent intent = new  Intent(getBaseContext(), ActivityUser.class);
