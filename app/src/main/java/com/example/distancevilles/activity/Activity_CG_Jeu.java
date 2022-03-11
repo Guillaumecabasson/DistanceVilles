@@ -5,13 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.distancevilles.R;
 import com.example.distancevilles.metier.QuestionVilles;
 import com.example.distancevilles.utils.Utils;
 
-public class ActivityJeu extends Activity {
+public class Activity_CG_Jeu extends Activity {
 
     private QuestionVilles questionVilles;
     private int nb_points;
@@ -72,7 +71,7 @@ public class ActivityJeu extends Activity {
             nb_vies--;
         }
 
-        Intent intent = new  Intent(getBaseContext(), ActivityDisplayAnswer.class);
+        Intent intent = new  Intent(getBaseContext(), Activity_CG_DisplayAnswer.class);
         intent.putExtra("user_answer", user_answer);
         intent.putExtra("isCorrect", isCorrectAnswer);
         intent.putExtra("actual_question", questionActuelle);
@@ -110,7 +109,7 @@ public class ActivityJeu extends Activity {
             btn_answer2.setText(questionVilles.getReponses()[1].getNom());
         }
         else { // Le joueur a perdu
-            Intent intent = new  Intent(getBaseContext(), ActivityPerdu.class);
+            Intent intent = new  Intent(getBaseContext(), Activity_CG_Perdu.class);
             intent.putExtra("score", nb_points);
             startActivity(intent);
             this.finish();

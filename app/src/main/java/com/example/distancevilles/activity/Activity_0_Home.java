@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.example.distancevilles.R;
 import com.example.distancevilles.metier.Joueur;
 
-public class ActivityHome extends Activity{
+public class Activity_0_Home extends Activity{
 
     public static Joueur joueur = new Joueur("Anonymous", "", 1900, 0, "", 0 , 0);
 
@@ -30,11 +30,11 @@ public class ActivityHome extends Activity{
         this.textViewNom = this.findViewById(R.id.textViewNom);
 
         buttonJouer.setOnClickListener(v -> {
-            if(ActivityHome.joueur.getName().equals("Anonymous")) {
+            if(Activity_0_Home.joueur.getName().equals("Anonymous")) {
                 // Create the object of AlertDialog Builder class
-                AlertDialog.Builder builder = new AlertDialog.Builder(ActivityHome.this);
-                builder.setMessage("En lançant une partie sans vous être connecté(e) auparavant, votre score ne pourra pas être enregistré ! " +
-                        "Souhaitez-vous quand même continuer ?");
+                AlertDialog.Builder builder = new AlertDialog.Builder(Activity_0_Home.this);
+                builder.setMessage("En lançant une partie sans vous être connecté(e) auparavant, votre score " +
+                        "ne pourra pas être enregistré ! Souhaitez-vous quand même continuer ?");
                 builder.setTitle("Attention !");
 
                 // Set Cancelable false for when the user clicks on the outside the Dialog Box then it will remain show
@@ -44,7 +44,7 @@ public class ActivityHome extends Activity{
                 builder.setPositiveButton("Continuer", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(getBaseContext(), ActivityMenuCityGuesser.class);
+                        Intent intent = new Intent(getBaseContext(), Activity_CG_Menu.class);
                         startActivity(intent);
                         finish();
                     }
@@ -64,13 +64,13 @@ public class ActivityHome extends Activity{
                 alertDialog.show();
             }
             else {
-                Intent intent = new Intent(getBaseContext(), ActivityMenuCityGuesser.class);
+                Intent intent = new Intent(getBaseContext(), Activity_CG_Menu.class);
                 startActivity(intent);
                 this.finish();
             }
         });
         buttonCompte.setOnClickListener(v -> {
-            Intent intent = new  Intent(getBaseContext(), ActivityUser.class);
+            Intent intent = new  Intent(getBaseContext(), Activity_CG_User.class);
             startActivity(intent);
         });
         buttonQuitter.setOnClickListener(v -> {
@@ -85,7 +85,7 @@ public class ActivityHome extends Activity{
             }
         }
 
-        String helloUser = "Bonjour, " + ActivityHome.joueur.getName();
+        String helloUser = "Bonjour, " + Activity_0_Home.joueur.getName();
         textViewNom.setText(helloUser);
     }
 
@@ -93,7 +93,7 @@ public class ActivityHome extends Activity{
     public void onBackPressed()
     {
         // Create the object of AlertDialog Builder class
-        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityHome.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(Activity_0_Home.this);
 
         builder.setMessage("Do you want to exit ?");
         builder.setTitle("Alert !");

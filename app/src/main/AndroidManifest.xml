@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DistanceVilles">
         <activity
-            android:name=".activity.ActivityHome"
+            android:name=".activity.Activity_0_Home"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
@@ -19,12 +19,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.ActivityMenuCityGuesser" />
-        <activity android:name=".activity.ActivityJeu" />
-        <activity android:name=".activity.ActivityUser" />
-        <activity android:name=".activity.ActivityRecords" />
-        <activity android:name=".activity.ActivityDisplayAnswer" />
-        <activity android:name=".activity.ActivityPerdu" />
+        <activity android:name=".activity.Activity_CG_Menu" />
+        <activity android:name=".activity.Activity_CG_Jeu" />
+        <activity android:name=".activity.Activity_CG_User" />
+        <activity android:name=".activity.Activity_CG_Records" />
+        <activity android:name=".activity.Activity_CG_DisplayAnswer" />
+        <activity android:name=".activity.Activity_CG_Perdu" />
     </application>
 
 </manifest>

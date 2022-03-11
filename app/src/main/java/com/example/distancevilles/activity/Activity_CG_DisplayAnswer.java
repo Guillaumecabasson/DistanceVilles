@@ -5,14 +5,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.distancevilles.R;
 import com.example.distancevilles.metier.QuestionVilles;
 
 import java.text.DecimalFormat;
 
-public class ActivityDisplayAnswer extends Activity {
+public class Activity_CG_DisplayAnswer extends Activity {
 
     int actual_question;
     int points;
@@ -77,7 +76,7 @@ public class ActivityDisplayAnswer extends Activity {
         tv_distance2.setText(aff_text2);
         btn_back.setOnClickListener(v -> {
             actual_question++;
-            Intent intent2 = new  Intent(getBaseContext(), ActivityJeu.class);
+            Intent intent2 = new  Intent(getBaseContext(), Activity_CG_Jeu.class);
             intent2.putExtra("actual_question", actual_question);
             intent2.putExtra("points", points);
             intent2.putExtra("vies", vies);

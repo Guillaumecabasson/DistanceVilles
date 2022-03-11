@@ -9,7 +9,7 @@ import android.widget.TextView;
 import com.example.distancevilles.R;
 import com.example.distancevilles.dao.ScoresService;
 
-public class ActivityPerdu extends Activity {
+public class Activity_CG_Perdu extends Activity {
 
     private ScoresService scoresDAO;
     Button btn_backToMenu;
@@ -23,7 +23,7 @@ public class ActivityPerdu extends Activity {
         tv_perdu = (TextView) this.findViewById(R.id.textview_perdu);
         btn_backToMenu = this.findViewById(R.id.btn_backToMenu);
         btn_backToMenu.setOnClickListener(v -> {
-            Intent intent = new  Intent(getBaseContext(), ActivityMenuCityGuesser.class);
+            Intent intent = new  Intent(getBaseContext(), Activity_CG_Menu.class);
             //intent.putExtra("username", username);
             startActivity(intent);
             this.finish();
@@ -37,12 +37,12 @@ public class ActivityPerdu extends Activity {
             }
         }
 
-        String txt_perdu = "Dommage " + ActivityHome.joueur.getName() + ", c'est perdu !";
+        String txt_perdu = "Dommage " + Activity_0_Home.joueur.getName() + ", c'est perdu !";
         tv_perdu.setText(txt_perdu);
 
-        if(!ActivityHome.joueur.getName().equals("Anonymous")){
+        if(!Activity_0_Home.joueur.getName().equals("Anonymous")){
             scoresDAO = ScoresService.getInstance(this);
-            scoresDAO.insertScore(ActivityHome.joueur.getName(), score_final);
+            scoresDAO.insertScore(Activity_0_Home.joueur.getName(), score_final);
         }
     }
 

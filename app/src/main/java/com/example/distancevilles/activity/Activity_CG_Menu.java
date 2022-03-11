@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import com.example.distancevilles.R;
 
-public class ActivityMenuCityGuesser extends Activity {
+public class Activity_CG_Menu extends Activity {
 
     Button buttonJouer;
     Button buttonOptions;
@@ -26,7 +26,7 @@ public class ActivityMenuCityGuesser extends Activity {
         this.buttonQuitter = this.findViewById(R.id.buttonQuitter);
 
         buttonJouer.setOnClickListener(v -> {
-            Intent intent = new Intent(getBaseContext(), ActivityJeu.class);
+            Intent intent = new Intent(getBaseContext(), Activity_CG_Jeu.class);
             startActivity(intent);
             this.finish();
         });
@@ -34,12 +34,12 @@ public class ActivityMenuCityGuesser extends Activity {
 
         });
         buttonRecords.setOnClickListener(v -> {
-            Intent intent = new  Intent(getBaseContext(), ActivityRecords.class);
+            Intent intent = new  Intent(getBaseContext(), Activity_CG_Records.class);
             startActivity(intent);
             this.finish();
         });
         buttonQuitter.setOnClickListener(v -> {
-            Intent intent = new  Intent(getBaseContext(), ActivityHome.class);
+            Intent intent = new  Intent(getBaseContext(), Activity_0_Home.class);
             startActivity(intent);
             this.finish();
         });
@@ -50,7 +50,7 @@ public class ActivityMenuCityGuesser extends Activity {
     public void onBackPressed()
     {
         // Create the object of AlertDialog Builder class
-        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityMenuCityGuesser.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(Activity_CG_Menu.this);
         builder.setMessage("Do you want to exit ?");
         builder.setTitle("Alert !");
 

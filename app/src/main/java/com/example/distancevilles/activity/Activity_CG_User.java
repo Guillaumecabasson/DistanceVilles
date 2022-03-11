@@ -10,13 +10,11 @@ import android.widget.Spinner;
 
 import com.example.distancevilles.R;
 import com.example.distancevilles.dao.PlayersService;
-import com.example.distancevilles.dao.ScoresService;
-import com.example.distancevilles.dao.sqlite.DatabaseHelper;
 import com.example.distancevilles.metier.Joueur;
 
 import java.util.Date;
 
-public class ActivityUser extends Activity {
+public class Activity_CG_User extends Activity {
 
     private PlayersService playersDAO;
 
@@ -55,7 +53,7 @@ public class ActivityUser extends Activity {
         btn_seConnecter.setOnClickListener(v -> {
             // Recherche du joueur correspondant dans la BDD s'il existe
             // ActivityHome.joueur =
-            Intent intent = new  Intent(getBaseContext(), ActivityHome.class);
+            Intent intent = new  Intent(getBaseContext(), Activity_0_Home.class);
             startActivity(intent);
             this.finish();
         });
@@ -72,9 +70,9 @@ public class ActivityUser extends Activity {
             playersDAO.insertPlayer(joueur);
 
             // Si ça réussit
-            ActivityHome.joueur = joueur;
+            Activity_0_Home.joueur = joueur;
 
-            Intent intent = new  Intent(getBaseContext(), ActivityHome.class);
+            Intent intent = new  Intent(getBaseContext(), Activity_0_Home.class);
             startActivity(intent);
             this.finish();
         });
