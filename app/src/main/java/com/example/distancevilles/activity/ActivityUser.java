@@ -9,8 +9,16 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.example.distancevilles.R;
+import com.example.distancevilles.dao.PlayersService;
+import com.example.distancevilles.dao.ScoresService;
+import com.example.distancevilles.dao.sqlite.DatabaseHelper;
+import com.example.distancevilles.metier.Joueur;
+
+import java.util.Date;
 
 public class ActivityUser extends Activity {
+
+    private PlayersService playersDAO;
 
     EditText username_connection;
     EditText password_connection;
@@ -18,7 +26,7 @@ public class ActivityUser extends Activity {
 
     EditText username_creation;
     EditText password_creation;
-    EditText year_creation;
+    EditText birthyear_creation;
     Spinner pays_creation;
     Button btn_creation;
 
@@ -33,7 +41,7 @@ public class ActivityUser extends Activity {
 
         username_creation = (EditText) findViewById(R.id.username_creation);
         password_creation = (EditText) findViewById(R.id.password_creation);
-        year_creation = (EditText) findViewById(R.id.year_creation);
+        birthyear_creation = (EditText) findViewById(R.id.year_creation);
         pays_creation = (Spinner) findViewById(R.id.pays_creation);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -42,7 +50,6 @@ public class ActivityUser extends Activity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         pays_creation.setAdapter(adapter);
-
         btn_creation = (Button) findViewById(R.id.btn_creation);
 
         btn_seConnecter.setOnClickListener(v -> {
@@ -50,6 +57,18 @@ public class ActivityUser extends Activity {
             intent.putExtra("username", username_connection.getText().toString());
             startActivity(intent);
             this.finish();
+        });
+
+        btn_creation.setOnClickListener(v -> {
+            // Vérification des infos !!
+
+
+            playersDAO = PlayersService.getInstance(this);
+            // Rajout du compte à la BDD d'users si le pseudo n'est pas encore utilisé
+            Joueur joueur = new Joueur(username_creation.getText().toString(), password_creation.getText().toString(),
+                    Integer.parseInt(birthyear_creation.getText().toString()), new Date().getTime(),
+                    pays_creation.getSelectedItem().toString(), 0,0);
+            playersDAO.insertPlayer(joueur);
         });
 
     }

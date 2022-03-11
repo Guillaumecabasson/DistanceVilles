@@ -12,7 +12,7 @@ import com.example.distancevilles.dao.sqlite.DatabaseHelper;
 
 public class ActivityPerdu extends Activity {
 
-    private DatabaseHelper databaseManager;
+    private ScoresService scoresDAO;
     Button btn_backToMenu;
     TextView tv_perdu;
 
@@ -33,7 +33,7 @@ public class ActivityPerdu extends Activity {
         String txt_perdu = "Dommage " + ActivityMenu.joueur.getName() + ", c'est perdu !";
         tv_perdu.setText(txt_perdu);
 
-        ScoresService scoresDAO = ScoresService.getInstance(this);
+        scoresDAO = ScoresService.getInstance(this);
         scoresDAO.insertScore(ActivityMenu.joueur.getName(), ActivityMenu.joueur.getBest_score());
     }
 

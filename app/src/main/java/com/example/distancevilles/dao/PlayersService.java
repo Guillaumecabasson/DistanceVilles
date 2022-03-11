@@ -11,10 +11,10 @@ import java.util.List;
 public class PlayersService implements ServiceDAO<Joueur>{
 
     private static PlayersService instance;
-    private SQLitePlayersDao sqLiteSiteDao;
+    private SQLitePlayersDao sqLiteJoueurDao;
 
     private PlayersService(Context context){
-        sqLiteSiteDao = SQLitePlayersDao.getInstance(context);
+        sqLiteJoueurDao = SQLitePlayersDao.getInstance(context);
     }
 
     public static PlayersService getInstance(Context context) {
@@ -25,32 +25,35 @@ public class PlayersService implements ServiceDAO<Joueur>{
 
     @Override
     public long create(Joueur object) {
-        return sqLiteSiteDao.create(object);
+        return sqLiteJoueurDao.create(object);
     }
 
     @Override
     public int update(Joueur object) {
-        return sqLiteSiteDao.update(object);
+        return sqLiteJoueurDao.update(object);
     }
 
     @Override
     public int delete(long id) {
-        return sqLiteSiteDao.delete(id);
+        return sqLiteJoueurDao.delete(id);
     }
 
     @Override
     public Joueur findById(long id) {
-        return sqLiteSiteDao.findById(id);
+        return sqLiteJoueurDao.findById(id);
     }
 
     @Override
     public List<Joueur> findAll() {
-        return sqLiteSiteDao.findAll();
+        return sqLiteJoueurDao.findAll();
     }
 
     @Override
     public Cursor getWithCursor(long id) {
-        return sqLiteSiteDao.getWithCursor(id);
+        return sqLiteJoueurDao.getWithCursor(id);
     }
 
+    public void insertPlayer(Joueur joueur){
+        sqLiteJoueurDao.insertJoueur(joueur);
+    }
 }

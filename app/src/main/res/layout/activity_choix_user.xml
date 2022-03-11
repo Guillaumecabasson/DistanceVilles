@@ -12,7 +12,8 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="A quel compte voulez-vous vous connecter ?" />
+            android:text="A quel compte voulez-vous vous connecter ?"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <EditText
             android:id="@+id/username_connection"
@@ -41,7 +42,8 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Créez un compte très rapidement :" />
+            android:text="Créez un compte très rapidement :"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <EditText
             android:id="@+id/username_creation"

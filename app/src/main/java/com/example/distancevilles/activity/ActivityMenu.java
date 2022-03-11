@@ -14,7 +14,7 @@ import com.example.distancevilles.metier.Joueur;
 
 public class ActivityMenu extends Activity{
 
-    public static Joueur joueur = new Joueur("", 0, 0, 0);
+    public static Joueur joueur = new Joueur("", "", 2000, 0, "", 0 , 0);
 
     Button buttonJouer;
     Button buttonCompte;

@@ -22,9 +22,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String TABLE_PLAYERS = "DV_PLAYERS";
     public static final String KEY_PLAYERS_COL_ID = "idPlayer";
     public static final String KEY_PLAYERS_COL_NAME = "name";
+    public static final String KEY_PLAYERS_COL_PASSWORD = "password";
+    public static final String KEY_PLAYERS_COL_BIRTHYEAR = "birthyear";
+    public static final String KEY_PLAYERS_COL_REGISTR_DATE = "registration";
+    public static final String KEY_PLAYERS_COL_COUNTRY = "country";
     public static final String KEY_PLAYERS_COL_NBGAMES = "nbGames";
     public static final String KEY_PLAYERS_COL_BEST_SCORE = "bestScore";
-    public static final String KEY_PLAYERS_COL_REGISTR_DATE = "registration";
 
     private static final String DATABASE_CREATE_SCORES = "CREATE TABLE "
             + TABLE_SCORES
@@ -37,10 +40,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_CREATE_PLAYERS = "CREATE TABLE "
             + TABLE_PLAYERS
             + "(" + KEY_PLAYERS_COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-            + KEY_PLAYERS_COL_NAME + " TEXT NOT NULL,"
+            + KEY_PLAYERS_COL_NAME + " TEXT UNIQUE NOT NULL,"
+            + KEY_PLAYERS_COL_PASSWORD + " TEXT NOT NULL,"
+            + KEY_PLAYERS_COL_BIRTHYEAR + " INTEGER NOT NULL,"
+            + KEY_PLAYERS_COL_REGISTR_DATE + " INTEGER NOT NULL,"
+            + KEY_PLAYERS_COL_COUNTRY + " TEXT NOT NULL,"
             + KEY_PLAYERS_COL_NBGAMES + " INTEGER NOT NULL,"
-            + KEY_PLAYERS_COL_BEST_SCORE + " INTEGER NOT NULL,"
-            + KEY_PLAYERS_COL_REGISTR_DATE + " INTEGER NOT NULL"
+            + KEY_PLAYERS_COL_BEST_SCORE + " INTEGER NOT NULL"
             + ");";
 
     public DatabaseHelper(Context context){

@@ -4,10 +4,13 @@ import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.util.Log;
 
 import com.example.distancevilles.dao.ServiceDAO;
 import com.example.distancevilles.metier.Joueur;
+import com.example.distancevilles.metier.Score;
 
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,8 +20,9 @@ public class SQLitePlayersDao extends SQLiteDao<Joueur> implements ServiceDAO<Jo
     private static SQLitePlayersDao instance;
 
     private static final String[] allColumns = { DatabaseHelper.KEY_PLAYERS_COL_ID, DatabaseHelper.KEY_PLAYERS_COL_NAME,
-            DatabaseHelper.KEY_PLAYERS_COL_NBGAMES, DatabaseHelper.KEY_PLAYERS_COL_BEST_SCORE,
-            DatabaseHelper.KEY_PLAYERS_COL_REGISTR_DATE };
+            DatabaseHelper.KEY_PLAYERS_COL_PASSWORD, DatabaseHelper.KEY_PLAYERS_COL_BIRTHYEAR,
+            DatabaseHelper.KEY_PLAYERS_COL_REGISTR_DATE, DatabaseHelper.KEY_PLAYERS_COL_COUNTRY,
+            DatabaseHelper.KEY_PLAYERS_COL_NBGAMES, DatabaseHelper.KEY_PLAYERS_COL_BEST_SCORE};
 
     public SQLitePlayersDao(Context context) {
         super(context);
@@ -36,9 +40,7 @@ public class SQLitePlayersDao extends SQLiteDao<Joueur> implements ServiceDAO<Jo
         openWritable();
 
         ContentValues values = putContentValues(joueur);
-
         long lastInsertedId = sqLiteDatabase.insert(DatabaseHelper.TABLE_PLAYERS, null, values);
-
         close();
         return lastInsertedId;
     }
@@ -141,16 +143,46 @@ public class SQLitePlayersDao extends SQLiteDao<Joueur> implements ServiceDAO<Jo
 
     @Override
     public Joueur cursorToObject(Cursor cursor) {
-        return new Joueur(cursor.getString(0), cursor.getInt(1), cursor.getInt(2), cursor.getLong(3));
+        return new Joueur(cursor.getString(0), cursor.getString(1), cursor.getInt(2), cursor.getLong(3),
+                cursor.getString(4), cursor.getInt(5), cursor.getInt(6));
     }
 
     private ContentValues putContentValues(Joueur joueur) {
         ContentValues values = new ContentValues();
 
         values.put(DatabaseHelper.KEY_PLAYERS_COL_NAME, joueur.getName());
+        values.put(DatabaseHelper.KEY_PLAYERS_COL_PASSWORD, joueur.getPassword());
+        values.put(DatabaseHelper.KEY_PLAYERS_COL_BIRTHYEAR, joueur.getBirth_year());
+        values.put(DatabaseHelper.KEY_PLAYERS_COL_REGISTR_DATE, joueur.getRegistration_date());
+        values.put(DatabaseHelper.KEY_PLAYERS_COL_COUNTRY, joueur.getCountry());
         values.put(DatabaseHelper.KEY_PLAYERS_COL_NBGAMES, joueur.getNb_games());
         values.put(DatabaseHelper.KEY_PLAYERS_COL_BEST_SCORE, joueur.getBest_score());
-        values.put(DatabaseHelper.KEY_PLAYERS_COL_REGISTR_DATE, joueur.getRegistration_date());
+
         return values;
+    }
+
+    public void insertJoueur(Joueur joueur) {
+        openReadable();
+        Cursor cursor = sqLiteDatabase.query(DatabaseHelper.TABLE_PLAYERS, new String[]{"idPlayer", "name", "password", "birthyear",
+                "registration", "country", "nbGames", "bestScore"}, null, null, null, null, null, null);
+
+        cursor.moveToFirst();
+        boolean found = false;
+        Joueur joueur_recup = new Joueur();
+
+        while(!cursor.isAfterLast() && !found){
+            joueur_recup = new Joueur(cursor.getInt(0), cursor.getString(1), cursor.getString(2), cursor.getInt(3),
+                    cursor.getLong(4), cursor.getString(5), cursor.getInt(6), cursor.getInt(7));
+            if(joueur_recup.getName().toString().equals(joueur.getName().toString())){
+                Log.i("DATABASE", "un utilisateur avec le même nom existe déjà");
+                found = true;
+            }
+            cursor.moveToNext();
+        }
+        cursor.close();
+
+        if(!found) { create(joueur); }
+
+        close();
     }
 }
