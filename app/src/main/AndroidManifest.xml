@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DistanceVilles">
         <activity
-            android:name=".activity.ActivityMenu"
+            android:name=".activity.ActivityHome"
             android:exported="true"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
@@ -19,6 +19,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.ActivityMenu" />
         <activity android:name=".activity.ActivityJeu" />
         <activity android:name=".activity.ActivityUser" />
         <activity android:name=".activity.ActivityRecords" />

@@ -1,6 +1,7 @@
 <resources>
     <!--GENERAL-->
-    <string name="app_name">City Guesser</string>
+    <string name="app_name">The Original Guesser Game</string>
+    <string name="game_name">City Guesser</string>
     <string name="auteurs">CABASSON Guillaume</string>
 
     <!--MENU ACCUEIL-->
@@ -8,6 +9,7 @@
     <string name="menu_play">JOUER</string>
     <string name="menu_user">COMPTE</string>
     <string name="menu_quit">QUITTER</string>
+    <string name="menu_gohome">RETOUR AU MENU</string>
     <string name="menu_records">RECORDS</string>
 
     <!--STRING JEU-->

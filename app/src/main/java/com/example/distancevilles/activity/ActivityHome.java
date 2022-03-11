@@ -12,23 +12,21 @@ import com.example.distancevilles.R;
 import com.example.distancevilles.listener.ListenerBoutonQuitter;
 import com.example.distancevilles.metier.Joueur;
 
-public class ActivityMenu extends Activity{
+public class ActivityHome extends Activity{
 
     public static Joueur joueur = new Joueur("Anonymous", "", 2000, 0, "", 0 , 0);
 
     Button buttonJouer;
     Button buttonCompte;
-    Button buttonRecords;
     Button buttonQuitter;
     TextView textViewNom;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.activity_home);
 
         this.buttonJouer = this.findViewById(R.id.buttonJouer);
         this.buttonCompte = this.findViewById(R.id.buttonCompte);
-        this.buttonRecords = this.findViewById(R.id.buttonRecords);
         this.buttonQuitter = this.findViewById(R.id.buttonQuitter);
         this.textViewNom = this.findViewById(R.id.textViewNom);
 
@@ -39,11 +37,6 @@ public class ActivityMenu extends Activity{
         });
         buttonCompte.setOnClickListener(v -> {
             Intent intent = new  Intent(getBaseContext(), ActivityUser.class);
-            startActivity(intent);
-            this.finish();
-        });
-        buttonRecords.setOnClickListener(v -> {
-            Intent intent = new  Intent(getBaseContext(), ActivityRecords.class);
             startActivity(intent);
             this.finish();
         });
@@ -69,7 +62,7 @@ public class ActivityMenu extends Activity{
     public void onBackPressed()
     {
         // Create the object of AlertDialog Builder class
-        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityMenu.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(ActivityHome.this);
 
         builder.setMessage("Do you want to exit ?");
         builder.setTitle("Alert !");
@@ -80,11 +73,11 @@ public class ActivityMenu extends Activity{
         // Set the positive button with yes name OnClickListener method is use of DialogInterface interface.
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    // When the user click yes button then app will close
-                    finish();
-                }
-            });
+            public void onClick(DialogInterface dialog, int which) {
+                // When the user click yes button then app will close
+                finish();
+            }
+        });
 
         // Set the Negative button with No name OnClickListener method is use of DialogInterface interface.
         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
